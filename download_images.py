@@ -24,25 +24,30 @@ def get_json():
     Returns: 
         Dict of JSON metadata from WikiArt
     """
-    try:
-        response = requests.get(
-            settings.BASE_URL+settings.STYLE_URL,
-            timeout=settings.METADATA_REQUEST_TIMEOUT)
-        data = response.json()
-    except requests.exceptions.RequestException as e:
-        print(e)
-        sys.exit(1)
+    data_list = []
 
-    return data
+    for page in range(1,10):
+        url = settings.BASE_URL + settings.STYLE_URL + "&"  + settings.PAGINATION_URL + str(page)
+        print(url)
+        try:
+            response = requests.get(url,timeout=settings.METADATA_REQUEST_TIMEOUT)
+            data = response.json()
+            data_list.append(data)
+        except requests.exceptions.RequestException as e:
+            print(e)
+            sys.exit(1)
+
+    return data_list
+
 
 def save_json(data):
     """
-    Converts dictionary to JSON, writes to file
-    Args: 
+    Converts list to JSON, writes to file
+    Args:
         Data (dictionary)
-    
-    Returns: 
-        None  
+
+    Returns:
+        None
     """
     data = json.dumps(data)
 
@@ -51,15 +56,15 @@ def save_json(data):
 
 def get_image_links(data):
     """
-    Passes in dictionary of image links
-    Args: 
+    Passes in list of image links
+    Args:
         Data (dictionary)
-    Returns: 
+    Returns:
         List of painting links
     """
     painting_links = []
-    
-    for painting in data['Paintings']:
+
+    for painting in data[0]['Paintings']:
         painting_link = (painting['image'])
         painting_links.append(painting_link)
 
@@ -84,8 +89,7 @@ def download_images(links):
             print(e)
             sys.exit(1)
 
-
-        regex_search = re.search('[a-z-0-9]+.jpg', link, re.IGNORECASE)
+        regex_search = re.search('[a-z-0-9]+(.jpg|.png)', link, re.IGNORECASE)
         print(regex_search)
         regex = regex_search.group(0)
         print(regex)
@@ -93,7 +97,7 @@ def download_images(links):
         with open(str(settings.ASSET_PATH) + regex, 'wb') as outfile:
             shutil.copyfileobj(response.raw, outfile)
         del response
-#
+
 # def upload_images_to_s3(files):
 #
 #     for f in files:
@@ -102,14 +106,14 @@ def download_images(links):
 #
 
 
-def upload_json_to_s3():
-
-    json_files = list(settings.ASSET_PATH.rglob('*.json'))
-
-    for f in json_files:
-        full_file_path = str(f.parent) + "/" + str(f.name)
-        file_name  = str(f.name)
-        s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
+# def upload_json_to_s3():
+#
+#     json_files = list(settings.ASSET_PATH.rglob('*.json'))
+#
+#     for f in json_files:
+#         full_file_path = str(f.parent) + "/" + str(f.name)
+#         file_name  = str(f.name)
+#         s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
 
 data = get_json()
 files = save_json(data)
