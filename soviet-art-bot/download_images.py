@@ -4,13 +4,13 @@ in the Socialist Realism category
 
 """
 
+import json
+import shutil
+import sys
+
+import boto3
 import requests
 import settings
-import json
-import sys
-import boto3
-import shutil
-
 
 s3 = boto3.resource('s3')
 s3_client = boto3.client('s3', 'us-east-1')
@@ -25,10 +25,10 @@ def get_json():
     data_list = []
 
     for page in range(1,10):
-        url = settings.BASE_URL + settings.STYLE_URL + "&"  + settings.PAGINATION_URL + str(page)
+        url = settings.BASE_URL + settings.STYLE_URL + "&" + settings.PAGINATION_URL + str(page)
         print(url)
         try:
-            response = requests.get(url,timeout=settings.METADATA_REQUEST_TIMEOUT)
+            response = requests.get(url, timeout=settings.METADATA_REQUEST_TIMEOUT)
             data = response.json()
             data = data['Paintings']
             data_list.extend(data)
@@ -88,7 +88,7 @@ def download_images(links):
         print(link)
         try:
             response = requests.get(link,
-                timeout=settings.METADATA_REQUEST_TIMEOUT,stream=True)
+                                    timeout=settings.METADATA_REQUEST_TIMEOUT, stream=True)
         except requests.exceptions.RequestException as e:
             print(e)
             sys.exit(1)
