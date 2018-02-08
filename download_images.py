@@ -6,17 +6,15 @@ in the Socialist Realism category
 
 import requests
 import settings
-import os
 import json
 import sys
 import boto3
 import shutil
-import re
-
 
 
 s3 = boto3.resource('s3')
-s3_client = boto3.client('s3')
+s3_client = boto3.client('s3', 'us-east-1')
+
 
 
 def get_json():
@@ -32,12 +30,14 @@ def get_json():
         try:
             response = requests.get(url,timeout=settings.METADATA_REQUEST_TIMEOUT)
             data = response.json()
-            data_list.append(data)
+            data = data['Paintings']
+            data_list.extend(data)
         except requests.exceptions.RequestException as e:
             print(e)
             sys.exit(1)
 
     return data_list
+
 
 
 def save_json(data):
@@ -62,13 +62,17 @@ def get_image_links(data):
     Returns:
         List of painting links
     """
+
     painting_links = []
 
-    for painting in data[0]['Paintings']:
+    print(data)
+
+    for painting in data:
         painting_link = (painting['image'])
         painting_links.append(painting_link)
 
     return painting_links
+
 
 
 def download_images(links):
@@ -89,37 +93,39 @@ def download_images(links):
             print(e)
             sys.exit(1)
 
-        regex_search = re.search('[a-z-0-9]+(.jpg|.png)', link, re.IGNORECASE)
-        print(regex_search)
-        regex = regex_search.group(0)
-        print(regex)
+        find_index = link.rfind('/')
+        image_name  = link[find_index+1:]
 
-        with open(str(settings.ASSET_PATH) + regex, 'wb') as outfile:
+
+        with open(str(settings.ASSET_PATH) + image_name, 'wb') as outfile:
             shutil.copyfileobj(response.raw, outfile)
         del response
 
-# def upload_images_to_s3(files):
-#
-#     for f in files:
-#         key = settings.IMAGE_FOLDER + f
-#         client.put_object(Bucket=settings.BUCKET_NAME, Key=key, Body=f)
-#
+def upload_images_to_s3(directory):
+
+    for f in directory.iterdir():
+        if str(f).endswith(('.png', '.jpg')):
+            full_file_path = str(f.parent) + "/" + str(f.name)
+            file_name = str(f.name)
+            s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
+            print(f,"put")
 
 
-# def upload_json_to_s3():
-#
-#     json_files = list(settings.ASSET_PATH.rglob('*.json'))
-#
-#     for f in json_files:
-#         full_file_path = str(f.parent) + "/" + str(f.name)
-#         file_name  = str(f.name)
-#         s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
+def upload_json_to_s3(directory):
+
+    for f in directory.iterdir():
+        if str(f).endswith('.json'):
+            full_file_path = str(f.parent) + "/" + str(f.name)
+            file_name  = str(f.name)
+            s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
 
 data = get_json()
 files = save_json(data)
 links = get_image_links(data)
 download_images(links)
-# upload_json_to_s3()
+upload_json_to_s3()
+upload_images_to_s3(settings.BASE_FOLDER)
+upload_json_to_s3(settings.BASE_FOLDER)
 
 
 
