@@ -7,6 +7,7 @@ in the Socialist Realism category
 import json
 import shutil
 import sys
+from glob import glob
 
 import boto3
 import requests
@@ -96,10 +97,11 @@ def download_images(links):
         find_index = link.rfind('/')
         image_name  = link[find_index+1:]
 
+        file_location = settings.ASSET_PATH.joinpath(image_name)
 
-        with open(str(settings.ASSET_PATH) + image_name, 'wb') as outfile:
-            shutil.copyfileobj(response.raw, outfile)
-        del response
+        with open(str(file_location), 'wb') as outfile:
+                shutil.copyfileobj(response.raw, outfile)
+
 
 def upload_images_to_s3(directory):
 
@@ -124,8 +126,8 @@ files = save_json(data)
 links = get_image_links(data)
 download_images(links)
 upload_json_to_s3()
-upload_images_to_s3(settings.BASE_FOLDER)
-upload_json_to_s3(settings.BASE_FOLDER)
+upload_images_to_s3(settings.BASE_PATH)
+upload_json_to_s3(settings.BASE_PATH)
 
 
 
