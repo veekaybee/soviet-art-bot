@@ -59,7 +59,7 @@ def get_image_links(data):
     """
     Passes in list of image links
     Args:
-        Data (dictionary)
+        Data (list)
     Returns:
         List of painting links
     """
@@ -121,13 +121,17 @@ def upload_json_to_s3(directory):
             file_name  = str(f.name)
             s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
 
+
+
+
+
+
 data = get_json()
 files = save_json(data)
 links = get_image_links(data)
 download_images(links)
-upload_json_to_s3()
-upload_images_to_s3(settings.BASE_PATH)
-upload_json_to_s3(settings.BASE_PATH)
+upload_images_to_s3(settings.ASSET_PATH)
+upload_json_to_s3(settings.ASSET_PATH)
 
 
 
