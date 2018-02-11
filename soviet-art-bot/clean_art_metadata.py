@@ -1,18 +1,23 @@
 """
+Opens S3 bucket with
+
 Pulls in JSON metadata file and creates Ordered dict keyed by filename, with metadata for reference
 
 """
 
-
+import boto3
 import settings
 import json
 from glob import glob
 from collections import defaultdict
 
 
+s3 = boto3.resource('s3')
+s3_client = boto3.client('s3', 'us-east-1')
+
+
 
 def create_indexed_json(json_file):
-
 
     indexed_json = defaultdict()
 
@@ -38,5 +43,16 @@ def create_indexed_json(json_file):
         print(k,v)
 
 
-json_link = settings.ASSET_PATH.joinpath(settings.JSON_FILE).with_suffix(settings.JSON_SUFFIX)
-create_indexed_json(json_link)
+def get_s3_painting_metadata():
+
+    metadata_location = settings.JSON_FILE + settings.JSON_SUFFIX
+
+    for key in s3_client.list_objects(Bucket=settings.BASE_BUCKET)['Contents']:
+            print(key['Key'])
+
+
+def get_s3_painting_name():
+    pass
+
+
+get_s3_painting_metadata()
