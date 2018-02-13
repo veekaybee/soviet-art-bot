@@ -13,6 +13,7 @@ import boto3
 import requests
 import settings
 
+
 s3 = boto3.resource('s3')
 s3_client = boto3.client('s3', 'us-east-1')
 
@@ -102,6 +103,8 @@ def download_images(links):
         with open(str(file_location), 'wb') as outfile:
                 shutil.copyfileobj(response.raw, outfile)
 
+            #TODO: REFACTOR WITH .rsplit('/', 1)[1]
+
 
 def upload_images_to_s3(directory):
 
@@ -109,8 +112,11 @@ def upload_images_to_s3(directory):
         if str(f).endswith(('.png', '.jpg')):
             full_file_path = str(f.parent) + "/" + str(f.name)
             file_name = str(f.name)
-            s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
-            print(f,"put")
+            # s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
+            # print(f,"put")
+            k = Key(settings.BASE_BUCKET)
+            k.key = settings.IMAGE_FOLDER
+            k.set_contents_from_filename(file_name)
 
 
 def upload_json_to_s3(directory):
@@ -119,8 +125,7 @@ def upload_json_to_s3(directory):
         if str(f).endswith('.json'):
             full_file_path = str(f.parent) + "/" + str(f.name)
             file_name  = str(f.name)
-            s3_client.upload_file(full_file_path, settings.JSON_FOLDER, file_name)
-
+            s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
 
 
 
@@ -128,9 +133,9 @@ def upload_json_to_s3(directory):
 
 data = get_json()
 files = save_json(data)
-links = get_image_links(data)
-download_images(links)
-upload_images_to_s3(settings.ASSET_PATH)
+# links = get_image_links(data)
+# download_images(links)
+# upload_images_to_s3(settings.ASSET_PATH)
 upload_json_to_s3(settings.ASSET_PATH)
 
 
