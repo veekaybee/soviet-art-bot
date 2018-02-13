@@ -19,10 +19,13 @@ def access_twitter_api():
     api = tweepy.API(auth)
     return api
 
-def post_tweet(api):
+def post_tweet(api, json_defaultdict):
+
+    for k,v in json_defaultdict():
+
     api.update_with_media('/Users/vboykis/Desktop/soviet-art-bot/assetsyouth-of-the-poetess-1967.jpg', status="\"Youth of the poetess\"\nPainter, 1967")
     print("Tweet posted")
 
 
 api = access_twitter_api()
-post_tweet(api)
+post_tweet(api, clean_medata.)

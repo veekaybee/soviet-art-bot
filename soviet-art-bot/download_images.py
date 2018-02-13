@@ -1,7 +1,6 @@
 """
 This code queries WikiArt and returns all paintings and metadata
-in the Socialist Realism category  
-
+in the Socialist Realism category
 """
 
 import json
@@ -10,10 +9,12 @@ import sys
 from glob import glob
 
 import boto3
+
 import requests
 import settings
 
 
+# intialize connection to S3
 s3 = boto3.resource('s3')
 s3_client = boto3.client('s3', 'us-east-1')
 
@@ -21,8 +22,8 @@ s3_client = boto3.client('s3', 'us-east-1')
 
 def get_json():
     """
-    Returns: 
-        Dict of JSON metadata from WikiArt
+    Get JSON with art name and location from WikiArt site
+    :return: dictionary of filenames from WikiArt
     """
     data_list = []
 
@@ -112,11 +113,9 @@ def upload_images_to_s3(directory):
         if str(f).endswith(('.png', '.jpg')):
             full_file_path = str(f.parent) + "/" + str(f.name)
             file_name = str(f.name)
-            # s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
-            # print(f,"put")
-            k = Key(settings.BASE_BUCKET)
-            k.key = settings.IMAGE_FOLDER
-            k.set_contents_from_filename(file_name)
+            s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
+            print(f,"put")
+
 
 
 def upload_json_to_s3(directory):
@@ -127,15 +126,16 @@ def upload_json_to_s3(directory):
             file_name  = str(f.name)
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
 
-
-
+    #TODO: CLEAN UP "if os.path.getsize(filename) > (max_size * 1024):"
+def resize_images
+    pass
 
 
 data = get_json()
 files = save_json(data)
-# links = get_image_links(data)
-# download_images(links)
-# upload_images_to_s3(settings.ASSET_PATH)
+links = get_image_links(data)
+download_images(links)
+upload_images_to_s3(settings.ASSET_PATH)
 upload_json_to_s3(settings.ASSET_PATH)
 
 
