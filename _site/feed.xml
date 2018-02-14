@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.6.0">Jekyll</generator><link href="http://localhost:4000/soviet-art-bot/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/soviet-art-bot/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-02-14T12:47:34-05:00</updated><id>http://localhost:4000/soviet-art-bot/</id><title type="html">Soviet Art Bot</title><subtitle>A Simple Jekyll Theme.</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><entry><title type="html">Customize Duo</title><link href="http://localhost:4000/soviet-art-bot/posts/customize/" rel="alternate" type="text/html" title="Customize Duo" /><published>2017-10-13T00:00:00-04:00</published><updated>2017-10-13T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/customize</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/customize/">&lt;h2 id=&quot;step-1-customize-_configyml&quot;&gt;Step 1: Customize &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, and change to change the site’s title, URL, etc.&lt;/li&gt;
+  &lt;li&gt;Please change all the entries under &lt;code class=&quot;highlighter-rouge&quot;&gt;Customize Options: Must Change&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;step-2-write-articles&quot;&gt;Step 2: Write Articles&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Change &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt;, which will appear on the home page and also at the bottom of each article page.&lt;/li&gt;
+  &lt;li&gt;Then write articles under &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;If you don’t have anything under &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;, then duo will be a single-page site.&lt;/li&gt;
+  &lt;li&gt;If you want to add a Youtube video, read: &lt;a href=&quot;/duo/posts/responsive-youtube-example/&quot;&gt;Responsive Youtube Example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;step-3-deploy&quot;&gt;Step 3: Deploy&lt;/h2&gt;
+
+&lt;p&gt;If you &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;‘d &lt;code class=&quot;highlighter-rouge&quot;&gt;duo&lt;/code&gt;, then make sure to Change your git repository’s &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt; before pushing:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;optional&quot;&gt;Optional&lt;/h2&gt;
+
+&lt;p&gt;These steps are optional.&lt;/p&gt;
+
+&lt;h3 id=&quot;customize-html&quot;&gt;Customize HTML&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All of the HTML is written in &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/default.html&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;customize-css&quot;&gt;Customize CSS&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can use any of the classes from &lt;a href=&quot;http://tachyons.io/&quot;&gt;Tachyons&lt;/a&gt; CSS library, as well as &lt;a href=&quot;https://github.com/shuhei/material-colors&quot;&gt;colors from material design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;CSS is preprocessed using &lt;a href=&quot;https://github.com/JeffreyWay/laravel-mix/&quot;&gt;Laravel Mix&lt;/a&gt;, a &lt;a href=&quot;https://webpack.js.org/&quot;&gt;Webpack&lt;/a&gt; wrapper.&lt;/li&gt;
+  &lt;li&gt;To edit CSS, first install &lt;a href=&quot;https://yarnpkg.com/en/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yarn&lt;/code&gt;&lt;/a&gt;, and run:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Download npm modules&lt;/span&gt;
+yarn install
+
+&lt;span class=&quot;c&quot;&gt;# Run Jekyll and also watch for CSS changes&lt;/span&gt;
+yarn watch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then edit &lt;code class=&quot;highlighter-rouge&quot;&gt;_static/app.css&lt;/code&gt;, then wait for it to be compiled into &lt;code class=&quot;highlighter-rouge&quot;&gt;static/app.css&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;You can also edit &lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.mix.js&lt;/code&gt; to customize Webpack config.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;customize-favicon&quot;&gt;Customize Favicon&lt;/h3&gt;
+
+&lt;p&gt;Favicon is generated using &lt;a href=&quot;https://github.com/albinekb/favicon-emoji&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;favicon-emoji&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;enabled-jekyll-plugins&quot;&gt;Enabled Jekyll Plugins&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll-seo-tag/&quot;&gt;jekyll-seo-tag&lt;/a&gt; for meta/og tag generation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll-feed&quot;&gt;jekyll-feed&lt;/a&gt; for RSS feed generation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll-sitemap&quot;&gt;jekyll-sitemap&lt;/a&gt; for sitemap generation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;jemoji&lt;/a&gt; for GitHub style emojis&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">Step 1: Customize _config.yml</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry><entry><title type="html">HTML Test Case</title><link href="http://localhost:4000/soviet-art-bot/posts/html-test-case/" rel="alternate" type="text/html" title="HTML Test Case" /><published>2017-10-12T00:00:00-04:00</published><updated>2017-10-12T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/html-test-case</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/html-test-case/">&lt;section id=&quot;text&quot;&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Text&lt;/h1&gt;&lt;/header&gt;
+  &lt;article id=&quot;text__headings&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Headings&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Heading 1&lt;/h1&gt;
+      &lt;h2&gt;Heading 2&lt;/h2&gt;
+      &lt;h3&gt;Heading 3&lt;/h3&gt;
+      &lt;h4&gt;Heading 4&lt;/h4&gt;
+      &lt;h5&gt;Heading 5&lt;/h5&gt;
+      &lt;h6&gt;Heading 6&lt;/h6&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__paragraphs&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Paragraphs&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;p&gt;A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the
+        syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__blockquotes&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Blockquotes&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;blockquote&gt;
+        &lt;p&gt;A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.&lt;/p&gt;
+        &lt;p&gt;It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.&lt;/p&gt;
+        &lt;cite&gt;&lt;a href=&quot;#!&quot;&gt;Said no one, ever.&lt;/a&gt;&lt;/cite&gt;
+      &lt;/blockquote&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__lists&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Lists&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;h3&gt;Definition list&lt;/h3&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;Definition List Title&lt;/dt&gt;
+        &lt;dd&gt;This is a definition list division.&lt;/dd&gt;
+      &lt;/dl&gt;
+      &lt;h3&gt;Ordered List&lt;/h3&gt;
+      &lt;ol&gt;
+        &lt;li&gt;List Item 1&lt;/li&gt;
+        &lt;li&gt;List Item 2&lt;/li&gt;
+        &lt;li&gt;List Item 3&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;h3&gt;Unordered List&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;List Item 1&lt;/li&gt;
+        &lt;li&gt;List Item 2&lt;/li&gt;
+        &lt;li&gt;List Item 3&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__hr&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Horizontal rules&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;hr /&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__tables&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Tabular data&lt;/h1&gt;&lt;/header&gt;
+    &lt;table&gt;
+      &lt;caption&gt;Table Caption&lt;/caption&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Table Heading 1&lt;/th&gt;
+          &lt;th&gt;Table Heading 2&lt;/th&gt;
+          &lt;th&gt;Table Heading 3&lt;/th&gt;
+          &lt;th&gt;Table Heading 4&lt;/th&gt;
+          &lt;th&gt;Table Heading 5&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tfoot&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Table Footer 1&lt;/th&gt;
+          &lt;th&gt;Table Footer 2&lt;/th&gt;
+          &lt;th&gt;Table Footer 3&lt;/th&gt;
+          &lt;th&gt;Table Footer 4&lt;/th&gt;
+          &lt;th&gt;Table Footer 5&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Table Cell 1&lt;/td&gt;
+          &lt;td&gt;Table Cell 2&lt;/td&gt;
+          &lt;td&gt;Table Cell 3&lt;/td&gt;
+          &lt;td&gt;Table Cell 4&lt;/td&gt;
+          &lt;td&gt;Table Cell 5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Table Cell 1&lt;/td&gt;
+          &lt;td&gt;Table Cell 2&lt;/td&gt;
+          &lt;td&gt;Table Cell 3&lt;/td&gt;
+          &lt;td&gt;Table Cell 4&lt;/td&gt;
+          &lt;td&gt;Table Cell 5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Table Cell 1&lt;/td&gt;
+          &lt;td&gt;Table Cell 2&lt;/td&gt;
+          &lt;td&gt;Table Cell 3&lt;/td&gt;
+          &lt;td&gt;Table Cell 4&lt;/td&gt;
+          &lt;td&gt;Table Cell 5&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Table Cell 1&lt;/td&gt;
+          &lt;td&gt;Table Cell 2&lt;/td&gt;
+          &lt;td&gt;Table Cell 3&lt;/td&gt;
+          &lt;td&gt;Table Cell 4&lt;/td&gt;
+          &lt;td&gt;Table Cell 5&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__code&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Code&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;strong&gt;Keyboard input:&lt;/strong&gt; &lt;kbd&gt;Cmd&lt;/kbd&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Inline code:&lt;/strong&gt; &lt;code&gt;&amp;lt;div&amp;gt;code&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Sample output:&lt;/strong&gt; &lt;samp&gt;This is sample output from a computer program.&lt;/samp&gt;&lt;/p&gt;
+      &lt;h2&gt;Pre-formatted text&lt;/h2&gt;
+      &lt;pre&gt;P R E F O R M A T T E D T E X T
+! &quot; # $ % &amp;amp; ' ( ) * + , - . /
+0 1 2 3 4 5 6 7 8 9 : ; &amp;lt; = &amp;gt; ?
+@ A B C D E F G H I J K L M N O
+P Q R S T U V W X Y Z [ \ ] ^ _
+` a b c d e f g h i j k l m n o
+p q r s t u v w x y z { | } ~ &lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;text__inline&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Inline elements&lt;/h1&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;p&gt;&lt;a href=&quot;#!&quot;&gt;This is a text link&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Strong is used to indicate strong importance.&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;em&gt;This text has added emphasis.&lt;/em&gt;&lt;/p&gt;
+      &lt;p&gt;The &lt;b&gt;b element&lt;/b&gt; is stylistically different text from normal text, without any special importance.&lt;/p&gt;
+      &lt;p&gt;The &lt;i&gt;i element&lt;/i&gt; is text that is offset from the normal text.&lt;/p&gt;
+      &lt;p&gt;The &lt;u&gt;u element&lt;/u&gt; is text with an unarticulated, though explicitly rendered, non-textual annotation.&lt;/p&gt;
+      &lt;p&gt;&lt;del&gt;This text is deleted&lt;/del&gt; and &lt;ins&gt;This text is inserted&lt;/ins&gt;.&lt;/p&gt;
+      &lt;p&gt;&lt;s&gt;This text has a strikethrough&lt;/s&gt;.&lt;/p&gt;
+      &lt;p&gt;Superscript&lt;sup&gt;®&lt;/sup&gt;.&lt;/p&gt;
+      &lt;p&gt;Subscript for things like H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;
+      &lt;p&gt;&lt;small&gt;This small text is small for for fine print, etc.&lt;/small&gt;&lt;/p&gt;
+      &lt;p&gt;Abbreviation: &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;q cite=&quot;https://developer.mozilla.org/en-US/docs/HTML/Element/q&quot;&gt;This text is a short inline quotation.&lt;/q&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;cite&gt;This is a citation.&lt;/cite&gt;&lt;/p&gt;
+      &lt;p&gt;The &lt;dfn&gt;dfn element&lt;/dfn&gt; indicates a definition.&lt;/p&gt;
+      &lt;p&gt;The &lt;mark&gt;mark element&lt;/mark&gt; indicates a highlight.&lt;/p&gt;
+      &lt;p&gt;The &lt;var&gt;variable element&lt;/var&gt;, such as &lt;var&gt;x&lt;/var&gt; = &lt;var&gt;y&lt;/var&gt;.&lt;/p&gt;
+      &lt;p&gt;The time element: &lt;time datetime=&quot;2013-04-06T12:32+00:00&quot;&gt;2 weeks ago&lt;/time&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+
+&lt;section id=&quot;embedded&quot;&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Embedded content&lt;/h1&gt;&lt;/header&gt;
+  &lt;article id=&quot;embedded__images&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Images&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;
+      &lt;h3&gt;No &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element&lt;/h3&gt;
+      &lt;p&gt;&lt;img src=&quot;http://placekitten.com/420/420&quot; alt=&quot;Image alt text&quot; /&gt;&lt;/p&gt;
+      &lt;h3&gt;Wrapped in a &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element, no &lt;code&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;&lt;/h3&gt;
+      &lt;figure&gt;&lt;img src=&quot;http://placekitten.com/420/420&quot; alt=&quot;Image alt text&quot; /&gt;&lt;/figure&gt;
+      &lt;h3&gt;Wrapped in a &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element, with a &lt;code&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;&lt;/h3&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;http://placekitten.com/420/420&quot; alt=&quot;Image alt text&quot; /&gt;
+        &lt;figcaption&gt;Here is a caption for this image.&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__audio&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Audio&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;audio controls=&quot;&quot;&gt;audio&lt;/audio&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__video&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Video&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;video controls=&quot;&quot;&gt;video&lt;/video&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__canvas&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Canvas&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;canvas&gt;canvas&lt;/canvas&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__meter&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Meter&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;meter value=&quot;2&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;2 out of 10&lt;/meter&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__progress&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Progress&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;progress&gt;progress&lt;/progress&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__svg&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Inline SVG&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;svg width=&quot;100px&quot; height=&quot;100px&quot;&gt;&lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;100&quot; fill=&quot;#1fa3ec&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  &lt;article id=&quot;embedded__iframe&quot;&gt;
+    &lt;header&gt;
+      &lt;h2&gt;IFrame&lt;/h2&gt;&lt;/header&gt;
+    &lt;div&gt;&lt;iframe src=&quot;index.html&quot; height=&quot;300&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+&lt;section id=&quot;forms&quot;&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Form elements&lt;/h1&gt;&lt;/header&gt;
+  &lt;form&gt;
+    &lt;fieldset id=&quot;forms__input&quot;&gt;
+      &lt;legend&gt;Input fields&lt;/legend&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__text&quot;&gt;Text Input&lt;/label&gt;
+        &lt;input id=&quot;input__text&quot; type=&quot;text&quot; placeholder=&quot;Text Input&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__password&quot;&gt;Password&lt;/label&gt;
+        &lt;input id=&quot;input__password&quot; type=&quot;password&quot; placeholder=&quot;Type your Password&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__webaddress&quot;&gt;Web Address&lt;/label&gt;
+        &lt;input id=&quot;input__webaddress&quot; type=&quot;url&quot; placeholder=&quot;http://yoursite.com&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__emailaddress&quot;&gt;Email Address&lt;/label&gt;
+        &lt;input id=&quot;input__emailaddress&quot; type=&quot;email&quot; placeholder=&quot;name@email.com&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__phone&quot;&gt;Phone Number&lt;/label&gt;
+        &lt;input id=&quot;input__phone&quot; type=&quot;tel&quot; placeholder=&quot;(999) 999-9999&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__search&quot;&gt;Search&lt;/label&gt;
+        &lt;input id=&quot;input__search&quot; type=&quot;search&quot; placeholder=&quot;Enter Search Term&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__text2&quot;&gt;Number Input&lt;/label&gt;
+        &lt;input id=&quot;input__text2&quot; type=&quot;number&quot; placeholder=&quot;Enter a Number&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__text3&quot; class=&quot;error&quot;&gt;Error&lt;/label&gt;
+        &lt;input id=&quot;input__text3&quot; class=&quot;is-error&quot; type=&quot;text&quot; placeholder=&quot;Text Input&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;input__text4&quot; class=&quot;valid&quot;&gt;Valid&lt;/label&gt;
+        &lt;input id=&quot;input__text4&quot; class=&quot;is-valid&quot; type=&quot;text&quot; placeholder=&quot;Text Input&quot; /&gt;
+      &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__select&quot;&gt;
+      &lt;legend&gt;Select menus&lt;/legend&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;select&quot;&gt;Select&lt;/label&gt;
+        &lt;select id=&quot;select&quot;&gt;
+&lt;optgroup label=&quot;Option Group&quot;&gt;
+&lt;option&gt;Option One&lt;/option&gt;
+&lt;option&gt;Option Two&lt;/option&gt;
+&lt;option&gt;Option Three&lt;/option&gt;
+&lt;/optgroup&gt;
+&lt;/select&gt;
+      &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__checkbox&quot;&gt;
+      &lt;legend&gt;Checkboxes&lt;/legend&gt;
+      &lt;ul class=&quot;list list--bare&quot;&gt;
+        &lt;li&gt;&lt;label for=&quot;checkbox1&quot;&gt;&lt;input id=&quot;checkbox1&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; checked=&quot;checked&quot; /&gt; Choice A&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;label for=&quot;checkbox2&quot;&gt;&lt;input id=&quot;checkbox2&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; /&gt; Choice B&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;label for=&quot;checkbox3&quot;&gt;&lt;input id=&quot;checkbox3&quot; name=&quot;checkbox&quot; type=&quot;checkbox&quot; /&gt; Choice C&lt;/label&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__radio&quot;&gt;
+      &lt;legend&gt;Radio buttons&lt;/legend&gt;
+      &lt;ul class=&quot;list list--bare&quot;&gt;
+        &lt;li&gt;&lt;label for=&quot;radio1&quot;&gt;&lt;input id=&quot;radio1&quot; name=&quot;radio&quot; type=&quot;radio&quot; class=&quot;radio&quot; checked=&quot;checked&quot; /&gt; Option 1&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;label for=&quot;radio2&quot;&gt;&lt;input id=&quot;radio2&quot; name=&quot;radio&quot; type=&quot;radio&quot; class=&quot;radio&quot; /&gt; Option 2&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;label for=&quot;radio3&quot;&gt;&lt;input id=&quot;radio3&quot; name=&quot;radio&quot; type=&quot;radio&quot; class=&quot;radio&quot; /&gt; Option 3&lt;/label&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__textareas&quot;&gt;
+      &lt;legend&gt;Textareas&lt;/legend&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;textarea&quot;&gt;Textarea&lt;/label&gt;
+        &lt;textarea id=&quot;textarea&quot; rows=&quot;8&quot; cols=&quot;48&quot; placeholder=&quot;Enter your message here&quot;&gt;&lt;/textarea&gt;
+      &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__html5&quot;&gt;
+      &lt;legend&gt;HTML5 inputs&lt;/legend&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;ic&quot;&gt;Color input&lt;/label&gt;
+        &lt;input type=&quot;color&quot; id=&quot;ic&quot; value=&quot;#000000&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;in&quot;&gt;Number input&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;in&quot; min=&quot;0&quot; max=&quot;10&quot; value=&quot;5&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;ir&quot;&gt;Range input&lt;/label&gt;
+        &lt;input type=&quot;range&quot; id=&quot;ir&quot; value=&quot;10&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;idd&quot;&gt;Date input&lt;/label&gt;
+        &lt;input type=&quot;date&quot; id=&quot;idd&quot; value=&quot;1970-01-01&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;idm&quot;&gt;Month input&lt;/label&gt;
+        &lt;input type=&quot;month&quot; id=&quot;idm&quot; value=&quot;1970-01&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;idw&quot;&gt;Week input&lt;/label&gt;
+        &lt;input type=&quot;week&quot; id=&quot;idw&quot; value=&quot;1970-W01&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;idt&quot;&gt;Datetime input&lt;/label&gt;
+        &lt;input type=&quot;datetime&quot; id=&quot;idt&quot; value=&quot;1970-01-01T00:00:00Z&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;label for=&quot;idtl&quot;&gt;Datetime-local input&lt;/label&gt;
+        &lt;input type=&quot;datetime-local&quot; id=&quot;idtl&quot; value=&quot;1970-01-01T00:00&quot; /&gt;
+      &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+    &lt;fieldset id=&quot;forms__action&quot;&gt;
+      &lt;legend&gt;Action buttons&lt;/legend&gt;
+      &lt;p&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;&amp;lt;input type=submit&amp;gt;&quot; /&gt;
+        &lt;input type=&quot;button&quot; value=&quot;&amp;lt;input type=button&amp;gt;&quot; /&gt;
+        &lt;input type=&quot;reset&quot; value=&quot;&amp;lt;input type=reset&amp;gt;&quot; /&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;&amp;lt;input disabled&amp;gt;&quot; disabled=&quot;&quot; /&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;button type=&quot;submit&quot;&gt;&amp;lt;button type=submit&amp;gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot;&gt;&amp;lt;button type=button&amp;gt;&lt;/button&gt;
+        &lt;button type=&quot;reset&quot;&gt;&amp;lt;button type=reset&amp;gt;&lt;/button&gt;
+        &lt;button type=&quot;button&quot; disabled=&quot;&quot;&gt;&amp;lt;button disabled&amp;gt;&lt;/button&gt;
+      &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;[Top]&lt;/a&gt;&lt;/p&gt;
+  &lt;/form&gt;
+&lt;/section&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">Text Headings Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 [Top] Paragraphs A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose. [Top] Blockquotes A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text. It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom. Said no one, ever. [Top] Lists Definition list Definition List Title This is a definition list division. Ordered List List Item 1 List Item 2 List Item 3 Unordered List List Item 1 List Item 2 List Item 3 [Top] Horizontal rules [Top] Tabular data Table Caption Table Heading 1 Table Heading 2 Table Heading 3 Table Heading 4 Table Heading 5 Table Footer 1 Table Footer 2 Table Footer 3 Table Footer 4 Table Footer 5 Table Cell 1 Table Cell 2 Table Cell 3 Table Cell 4 Table Cell 5 Table Cell 1 Table Cell 2 Table Cell 3 Table Cell 4 Table Cell 5 Table Cell 1 Table Cell 2 Table Cell 3 Table Cell 4 Table Cell 5 Table Cell 1 Table Cell 2 Table Cell 3 Table Cell 4 Table Cell 5 [Top] Code Keyboard input: Cmd Inline code: &amp;lt;div&amp;gt;code&amp;lt;/div&amp;gt; Sample output: This is sample output from a computer program. Pre-formatted text P R E F O R M A T T E D T E X T ! &quot; # $ % &amp;amp; ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; &amp;lt; = &amp;gt; ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ [Top] Inline elements This is a text link. Strong is used to indicate strong importance. This text has added emphasis. The b element is stylistically different text from normal text, without any special importance. The i element is text that is offset from the normal text. The u element is text with an unarticulated, though explicitly rendered, non-textual annotation. This text is deleted and This text is inserted. This text has a strikethrough. Superscript®. Subscript for things like H2O. This small text is small for for fine print, etc. Abbreviation: HTML This text is a short inline quotation. This is a citation. The dfn element indicates a definition. The mark element indicates a highlight. The variable element, such as x = y. The time element: 2 weeks ago [Top]</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry><entry><title type="html">Syntax Highlighting Test Case</title><link href="http://localhost:4000/soviet-art-bot/posts/syntax-highlighting-test-case/" rel="alternate" type="text/html" title="Syntax Highlighting Test Case" /><published>2017-10-11T00:00:00-04:00</published><updated>2017-10-11T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/syntax-highlighting-test-case</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/syntax-highlighting-test-case/">&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# stdlib&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pathname'&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The containing module for Rouge&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Rouge&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reload!&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:remove_const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:Rouge&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;load&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;__FILE__&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Highlight some text with a given lexer and formatter.&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# @example&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#   Rouge.highlight('@foo = 1', 'ruby', 'html')&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#   Rouge.highlight('var foo = 1;', 'js', 'terminal256')&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#   # streaming - chunks become available as they are lexed&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#   Rouge.highlight(large_string, 'ruby', 'html') do |chunk|&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#     $stdout.print chunk&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;#   end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Lexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;respond_to?&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:lex&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;unknown lexer &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;respond_to?&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:format&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;unknown formatter &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;formatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lexer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">```ruby stdlib require ‘pathname’</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry><entry xml:lang="ja"><title type="html">Japanese Test Case</title><link href="http://localhost:4000/soviet-art-bot/posts/japanese-test-case/" rel="alternate" type="text/html" title="Japanese Test Case" /><published>2017-10-10T00:00:00-04:00</published><updated>2017-10-10T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/japanese-test-case</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/japanese-test-case/">&lt;p&gt;日本経済新聞2011/10/9日掲載『&lt;a href=&quot;https://www.nikkei.com/article/DGXZZO35455660Y1A001C1000000/&quot;&gt;「ハングリーであれ。愚か者であれ」ジョブズ氏スピーチ全訳&lt;/a&gt;』より&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;世界でもっとも優秀な大学の卒業式に同席できて光栄です。私は大学を卒業したことがありません。実のところ、きょうが人生でもっとも大学卒業に近づいた日です。本日は自分が生きてきた経験から、３つの話をさせてください。たいしたことではない。たった３つです。&lt;/p&gt;
+
+&lt;p&gt;まずは、点と点をつなげる、ということです。&lt;/p&gt;
+
+&lt;p&gt;私はリード大学をたった半年で退学したのですが、本当に学校を去るまでの１年半は大学に居座り続けたのです。ではなぜ、学校をやめたのでしょうか。&lt;/p&gt;
+
+&lt;p&gt;私が生まれる前、生みの母は未婚の大学院生でした。母は決心し、私を養子に出すことにしたのです。母は私を産んだらぜひとも、だれかきちんと大学院を出た人に引き取ってほしいと考え、ある弁護士夫婦との養子縁組が決まったのです。ところが、この夫婦は間際になって女の子をほしいと言いだした。こうして育ての親となった私の両親のところに深夜、電話がかかってきたのです。「思いがけず、養子にできる男の子が生まれたのですが、引き取る気はありますか」と。両親は「もちろん」と答えた。生みの母は、後々、養子縁組の書類にサインするのを拒否したそうです。私の母は大卒ではないし、父に至っては高校も出ていないからです。実の母は、両親が僕を必ず大学に行かせると約束したため、数カ月後にようやくサインに応じたのです。&lt;/p&gt;
+
+&lt;p&gt;そして17年後、私は本当に大学に通うことになった。ところが、スタンフォード並みに学費が高い大学に入ってしまったばっかりに、労働者階級の両親は蓄えのすべてを学費に注ぎ込むことになってしまいました。そして半年後、僕はそこまで犠牲を払って大学に通う価値が見いだせなくなってしまったのです。当時は人生で何をしたらいいのか分からなかったし、大学に通ってもやりたいことが見つかるとはとても思えなかった。私は、両親が一生かけて蓄えたお金をひたすら浪費しているだけでした。私は退学を決めました。何とかなると思ったのです。多少は迷いましたが、今振り返ると、自分が人生で下したもっとも正しい判断だったと思います。退学を決めたことで、興味もない授業を受ける必要がなくなった。そして、おもしろそうな授業に潜り込んだのです。&lt;/p&gt;
+
+&lt;p&gt;とはいえ、いい話ばかりではなかったです。私は寮の部屋もなく、友達の部屋の床の上で寝起きしました。食べ物を買うために、コカ・コーラの瓶を店に返し、５セントをかき集めたりもしました。温かい食べ物にありつこうと、毎週日曜日は７マイル先にあるクリシュナ寺院に徒歩で通ったものです。&lt;/p&gt;
+
+&lt;p&gt;それでも本当に楽しい日々でした。自分の興味の赴くままに潜り込んだ講義で得た知識は、のちにかけがえがないものになりました。たとえば、リード大では当時、全米でおそらくもっとも優れたカリグラフの講義を受けることができました。キャンパス中に貼られているポスターや棚のラベルは手書きの美しいカリグラフで彩られていたのです。退学を決めて必須の授業を受ける必要がなくなったので、カリグラフの講義で学ぼうと思えたのです。ひげ飾り文字を学び、文字を組み合わせた場合のスペースのあけ方も勉強しました。何がカリグラフを美しく見せる秘訣なのか会得しました。科学ではとらえきれない伝統的で芸術的な文字の世界のとりこになったのです。&lt;/p&gt;
+
+&lt;p&gt;もちろん当時は、これがいずれ何かの役に立つとは考えもしなかった。ところが10年後、最初のマッキントッシュを設計していたとき、カリグラフの知識が急によみがえってきたのです。そして、その知識をすべて、マックに注ぎ込みました。美しいフォントを持つ最初のコンピューターの誕生です。もし大学であの講義がなかったら、マックには多様なフォントや字間調整機能も入っていなかったでしょう。ウィンドウズはマックをコピーしただけなので、パソコンにこうした機能が盛り込まれることもなかったでしょう。もし私が退学を決心していなかったら、あのカリグラフの講義に潜り込むことはなかったし、パソコンが現在のようなすばらしいフォントを備えることもなかった。もちろん、当時は先々のために点と点をつなげる意識などありませんでした。しかし、いまふり返ると、将来役立つことを大学でしっかり学んでいたわけです。&lt;/p&gt;
+
+&lt;p&gt;繰り返しですが、将来をあらかじめ見据えて、点と点をつなぎあわせることなどできません。できるのは、後からつなぎ合わせることだけです。だから、我々はいまやっていることがいずれ人生のどこかでつながって実を結ぶだろうと信じるしかない。運命、カルマ…、何にせよ我々は何かを信じないとやっていけないのです。私はこのやり方で後悔したことはありません。むしろ、今になって大きな差をもたらしてくれたと思います。&lt;/p&gt;
+
+&lt;p&gt;２つ目の話は愛と敗北です。&lt;/p&gt;
+
+&lt;p&gt;私は若い頃に大好きなことに出合えて幸運でした。共同創業者のウォズニアックとともに私の両親の家のガレージでアップルを創業したのは二十歳のときでした。それから一生懸命に働き、10年後には売上高20億ドル、社員数4000人を超える会社に成長したのです。そして我々の最良の商品、マッキントッシュを発売したちょうど１年後、30歳になったときに、私は会社から解雇されたのです。自分で立ち上げた会社から、クビを言い渡されるなんて。&lt;/p&gt;
+
+&lt;p&gt;実は会社が成長するのにあわせ、一緒に経営できる有能な人材を外部から招いたのです。最初の１年はうまくいっていたのですが、やがてお互いの将来展望に食い違いがでてきたのです。そして最後には決定的な亀裂が生まれてしまった。そのとき、取締役会は彼に味方したのです。それで30歳のとき、私は追い出されたのです。それは周知の事実となりました。私の人生をかけて築いたものが、突然、手中から消えてしまったのです。これは本当にしんどい出来事でした。&lt;/p&gt;
+
+&lt;p&gt;１カ月くらいはぼうぜんとしていました。私にバトンを託した先輩の起業家たちを失望させてしまったと落ち込みました。デビッド・パッカードやボブ・ノイスに会い、台無しにしてしまったことをわびました。公然たる大失敗だったので、このまま逃げ出してしまおうかとさえ思いました。しかし、ゆっくりと何か希望がわいてきたのです。自分が打ち込んできたことが、やはり大好きだったのです。アップルでのつらい出来事があっても、この一点だけは変わらなかった。会社を追われはしましたが、もう一度挑戦しようと思えるようになったのです。&lt;/p&gt;
+
+&lt;p&gt;そのときは気づきませんでしたが、アップルから追い出されたことは、人生でもっとも幸運な出来事だったのです。将来に対する確証は持てなくなりましたが、会社を発展させるという重圧は、もう一度挑戦者になるという身軽さにとってかわりました。アップルを離れたことで、私は人生でもっとも創造的な時期を迎えることができたのです。&lt;/p&gt;
+
+&lt;p&gt;その後の５年間に、NeXTという会社を起業し、ピクサーも立ち上げました。そして妻になるすばらしい女性と巡り合えたのです。ピクサーは世界初のコンピューターを使ったアニメーション映画「トイ・ストーリー」を製作することになり、今では世界でもっとも成功したアニメ製作会社になりました。そして、思いがけないことに、アップルがNeXTを買収し、私はアップルに舞い戻ることになりました。いまや、NeXTで開発した技術はアップルで進むルネサンスの中核となっています。そして、ロレーンとともに最高の家族も築けたのです。&lt;/p&gt;
+
+&lt;p&gt;アップルを追われなかったら、今の私は無かったでしょう。非常に苦い薬でしたが、私にはそういうつらい経験が必要だったのでしょう。最悪のできごとに見舞われても、信念を失わないこと。自分の仕事を愛してやまなかったからこそ、前進し続けられたのです。皆さんも大好きなことを見つけてください。仕事でも恋愛でも同じです。仕事は人生の一大事です。やりがいを感じることができるただ一つの方法は、すばらしい仕事だと心底思えることをやることです。そして偉大なことをやり抜くただ一つの道は、仕事を愛することでしょう。好きなことがまだ見つからないなら、探し続けてください。決して立ち止まってはいけない。本当にやりたいことが見つかった時には、不思議と自分でもすぐに分かるはずです。すばらしい恋愛と同じように、時間がたつごとによくなっていくものです。だから、探し続けてください。絶対に、立ち尽くしてはいけません。&lt;/p&gt;
+
+&lt;p&gt;３つ目の話は死についてです。&lt;/p&gt;
+
+&lt;p&gt;私は17歳のときに「毎日をそれが人生最後の一日だと思って生きれば、その通りになる」という言葉にどこかで出合ったのです。それは印象に残る言葉で、その日を境に33年間、私は毎朝、鏡に映る自分に問いかけるようにしているのです。「もし今日が最後の日だとしても、今からやろうとしていたことをするだろうか」と。「違う」という答えが何日も続くようなら、ちょっと生き方を見直せということです。&lt;/p&gt;
+
+&lt;p&gt;自分はまもなく死ぬという認識が、重大な決断を下すときに一番役立つのです。なぜなら、永遠の希望やプライド、失敗する不安…これらはほとんどすべて、死の前には何の意味もなさなくなるからです。本当に大切なことしか残らない。自分は死ぬのだと思い出すことが、敗北する不安にとらわれない最良の方法です。我々はみんな最初から裸です。自分の心に従わない理由はないのです。&lt;/p&gt;
+
+&lt;p&gt;１年前、私はがんと診断されました。朝７時半に診断装置にかけられ、膵臓（すいぞう）に明白な腫瘍が見つかったのです。私は膵臓が何なのかさえ知らなかった。医者はほとんど治癒の見込みがないがんで、もっても半年だろうと告げたのです。医者からは自宅に戻り身辺整理をするように言われました。つまり、死に備えろという意味です。これは子どもたちに今後10年かけて伝えようとしていたことを、たった数カ月で語らなければならないということです。家族が安心して暮らせるように、すべてのことをきちんと片付けなければならない。別れを告げなさい、と言われたのです。&lt;/p&gt;
+
+&lt;p&gt;一日中診断結果のことを考えました。その日の午後に生検を受けました。のどから入れられた内視鏡が、胃を通って腸に達しました。膵臓に針を刺し、腫瘍細胞を採取しました。鎮痛剤を飲んでいたので分からなかったのですが、細胞を顕微鏡で調べた医師たちが騒ぎ出したと妻がいうのです。手術で治療可能なきわめてまれな膵臓がんだと分かったからでした。&lt;/p&gt;
+
+&lt;p&gt;人生で死にもっとも近づいたひとときでした。今後の何十年かはこうしたことが起こらないことを願っています。このような経験をしたからこそ、死というものがあなた方にとっても便利で大切な概念だと自信をもっていえます。&lt;/p&gt;
+
+&lt;p&gt;誰も死にたくない。天国に行きたいと思っている人間でさえ、死んでそこにたどり着きたいとは思わないでしょう。死は我々全員の行き先です。死から逃れた人間は一人もいない。それは、あるべき姿なのです。死はたぶん、生命の最高の発明です。それは生物を進化させる担い手。古いものを取り去り、新しいものを生み出す。今、あなた方は新しい存在ですが、いずれは年老いて、消えゆくのです。深刻な話で申し訳ないですが、真実です。&lt;/p&gt;
+
+&lt;p&gt;あなた方の時間は限られています。だから、本意でない人生を生きて時間を無駄にしないでください。ドグマにとらわれてはいけない。それは他人の考えに従って生きることと同じです。他人の考えに溺れるあまり、あなた方の内なる声がかき消されないように。そして何より大事なのは、自分の心と直感に従う勇気を持つことです。あなた方の心や直感は、自分が本当は何をしたいのかもう知っているはず。ほかのことは二の次で構わないのです。&lt;/p&gt;
+
+&lt;p&gt;私が若いころ、全地球カタログ（The Whole Earth Catalog）というすばらしい本に巡り合いました。私の世代の聖書のような本でした。スチュワート・ブランドというメンロパークに住む男性の作品で、詩的なタッチで躍動感がありました。パソコンやデスクトップ出版が普及する前の1960年代の作品で、すべてタイプライターとハサミ、ポラロイドカメラで作られていた。言ってみれば、グーグルのペーパーバック版です。グーグルの登場より35年も前に書かれたのです。理想主義的で、すばらしい考えで満ちあふれていました。&lt;/p&gt;
+
+&lt;p&gt;スチュワートと彼の仲間は全地球カタログを何度か発行し、一通りやり尽くしたあとに最終版を出しました。70年代半ばで、私はちょうどあなた方と同じ年頃でした。背表紙には早朝の田舎道の写真が。あなたが冒険好きなら、ヒッチハイクをする時に目にするような風景です。その写真の下には「ハングリーなままであれ。愚かなままであれ」と書いてありました。筆者の別れの挨拶でした。ハングリーであれ。愚か者であれ。私自身、いつもそうありたいと思っています。そして今、卒業して新たな人生を踏み出すあなた方にもそうあってほしい。&lt;/p&gt;
+
+&lt;p&gt;ハングリーであれ。愚か者であれ。&lt;/p&gt;
+
+&lt;p&gt;ありがとうございました。&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">日本経済新聞2011/10/9日掲載『「ハングリーであれ。愚か者であれ」ジョブズ氏スピーチ全訳』より</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry><entry><title type="html">Responsive Youtube Example</title><link href="http://localhost:4000/soviet-art-bot/posts/responsive-youtube-example/" rel="alternate" type="text/html" title="Responsive Youtube Example" /><published>2017-10-09T00:00:00-04:00</published><updated>2017-10-09T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/responsive-youtube-example</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/responsive-youtube-example/">&lt;p&gt;Use Tachyons &lt;a href=&quot;http://tachyons.io/components/layout/horizontal-aspect-ratios/index.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aspect-ratio&lt;/code&gt;&lt;/a&gt; helpers:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aspect-ratio aspect-ratio--16x9&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;iframe&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aspect-ratio--object&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;560&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;315&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.youtube.com/embed/OFDAGiPJHL8&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;frameborder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;allowfullscreen&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;aspect-ratio aspect-ratio--16x9&quot;&gt;
+  &lt;iframe class=&quot;aspect-ratio--object&quot; width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/OFDAGiPJHL8&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">Use Tachyons aspect-ratio helpers:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry><entry><title type="html">Hello World</title><link href="http://localhost:4000/soviet-art-bot/posts/hello-world/" rel="alternate" type="text/html" title="Hello World" /><published>2017-10-08T00:00:00-04:00</published><updated>2017-10-08T00:00:00-04:00</updated><id>http://localhost:4000/soviet-art-bot/posts/hello-world</id><content type="html" xml:base="http://localhost:4000/soviet-art-bot/posts/hello-world/">&lt;p&gt;Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;, which you can use to host sites right from your GitHub repositories.&lt;/p&gt;
+
+&lt;h2 id=&quot;philosophy&quot;&gt;Philosophy&lt;/h2&gt;
+
+&lt;p&gt;Jekyll does what you tell it to do — no more, no less. It doesn’t try to outsmart users by making bold assumptions, nor does it burden them with needless complexity and configuration. Put simply, Jekyll gets out of your way and allows you to concentrate on what truly matters: your content.&lt;/p&gt;
+
+&lt;p&gt;See: &lt;a href=&quot;https://jekyllrb.com/philosophy&quot;&gt;https://jekyllrb.com/philosophy&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;Vicki Boykis&quot;}</name></author><summary type="html">Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/soviet-art-bot/static/images/in_peaceful_fields.jpg" /></entry></feed>

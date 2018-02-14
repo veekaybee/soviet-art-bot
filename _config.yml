@@ -1,1 +1,70 @@
-theme: jekyll-theme-cayman
+# ----------------------------------------------------------------------------
+# Customize Options: Must Change
+#
+# Title:
+title: Soviet Art Bot
+
+# Where the page will be deployed.
+# If it's https://foo.com/bar, just write "https://foo.com"
+url: "https://veekaybee.github.io/"
+
+# If you're deployging to a subdirectory (https://foo.com/bar/)
+# Then write "/bar/". Otherwise, remove this line.
+baseurl: "/soviet-art-bot/"
+
+# Twitter IDs
+twitter:
+  username: "vboykis"
+author:
+  twitter: "Vicki Boykis"
+
+# Set default og:image
+# From Unsplash: https://unsplash.com/photos/1_CMoFsPfso
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      image: "static/images/in_peaceful_fields.jpg"
+
+# ----------------------------------------------------------------------------
+# Customize Options: Optional
+#
+# See: https://material.io/guidelines/style/color.html
+# Use color-name-value, like pink-200 or deep-purple-100
+brand_color: "red-500"
+
+# How article URLs are structured.
+# See: https://jekyllrb.com/docs/permalinks/
+permalink: posts/:title/
+
+# "UA-NNNNNNNN-N"
+google_analytics: ""
+
+# Language. For example, if you write in Japanese, use "ja"
+lang: "en"
+
+# How many posts are visible on the home page without clicking "View More"
+num_posts_visible_initially: 5
+
+# Date format: See http://strftime.net/
+date_format: "%b %-d, %Y"
+# ----------------------------------------------------------------------------
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - mix-manifest.json
+  - webpack.mix.js
+  - yarn.lock
+  - package.json
+  - hot
+  - LICENSE.txt
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jemoji
+  - jekyll-readme-index
