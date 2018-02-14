@@ -1,11 +1,14 @@
-# Soviet Art Bot
-
 ~~Still very much in progress. ~~~~
 
+# Soviet Art Bot
 
-<img src="https://raw.githubusercontent.com/veekaybee/soviet-art-bot/master/assetsadmission-to-the-komsomol-1951.jpg" alt="Girl in a jacket" style="width:600px;height:400px;">
+[![Build Status](https://travis-ci.org/veekaybee/soviet-art-bot.svg?branch=master)](https://travis-ci.org/veekaybee/soviet-art-bot) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-A bot that finds socialist realism paintings and tweets them out.  
+
+![](https://raw.githubusercontent.com/veekaybee/soviet-art-bot/gh-pages/static/in_peaceful_fields.jpg)
+
+A bot that finds socialist realism paintings and tweets them out.  For the official webpage, [check out here.](https://veekaybee.github.io/soviet-art-bot/) 
 
 To see it in action, follow [@SovietArtBot](https://twitter.com/SovietArtBot)
 
@@ -18,4 +21,4 @@ To see it in action, follow [@SovietArtBot](https://twitter.com/SovietArtBot)
 
 
 
-## How to Contribute
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
