@@ -1,4 +1,4 @@
-![](static/images/in_peaceful_fields.jpg)
+![](https://raw.githubusercontent.com/veekaybee/soviet-art-bot/gh-pages/static/in_peaceful_fields.jpg)
 
 Andrei Mylnikov, "In Peaceful Fields" 1950
 
