@@ -2,7 +2,9 @@
 
 # Soviet Art Bot
 
-[![Build Status](https://travis-ci.org/veekaybee/soviet-art-bot.svg?branch=master)](https://travis-ci.org/veekaybee/soviet-art-bot)
+[![Build Status](https://travis-ci.org/veekaybee/soviet-art-bot.svg?branch=master)](https://travis-ci.org/veekaybee/soviet-art-bot) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
 
 ![](https://raw.githubusercontent.com/veekaybee/soviet-art-bot/gh-pages/static/in_peaceful_fields.jpg)
 
@@ -19,4 +21,4 @@ To see it in action, follow [@SovietArtBot](https://twitter.com/SovietArtBot)
 
 
 
-## How to Contribute
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
