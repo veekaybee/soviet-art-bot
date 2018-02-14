@@ -1,0 +1,5 @@
+{
+  "download_test.py": true,
+  "test_download_images.py": true,
+  "test_download_images.py::test_download_images": true
+}
