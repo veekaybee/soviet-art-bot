@@ -7,17 +7,17 @@ import json
 import shutil
 import sys
 from glob import glob
-
 import boto3
-
 import requests
-import settings
 
+import PIL
+from PIL import Image
 
-# intialize connection to S3
+import soviet_art_bot.settings as settings
+
+# intialize connection to S3 resources
 s3 = boto3.resource('s3')
 s3_client = boto3.client('s3', 'us-east-1')
-
 
 
 def get_json():
@@ -29,7 +29,7 @@ def get_json():
 
     for page in range(1,10):
         url = settings.BASE_URL + settings.STYLE_URL + "&" + settings.PAGINATION_URL + str(page)
-        print(url)
+        print(page, "pages processed")
         try:
             response = requests.get(url, timeout=settings.METADATA_REQUEST_TIMEOUT)
             data = response.json()
@@ -46,11 +46,8 @@ def get_json():
 def save_json(data):
     """
     Converts list to JSON, writes to file
-    Args:
-        Data (dictionary)
-
-    Returns:
-        None
+    :param data: Data (list)
+    :return:
     """
     data = json.dumps(data)
 
@@ -59,11 +56,9 @@ def save_json(data):
 
 def get_image_links(data):
     """
-    Passes in list of image links
-    Args:
-        Data (list)
-    Returns:
-        List of painting links
+    Passes in a list of image links
+    :param data: Data (list)
+    :return: List of painting links
     """
 
     painting_links = []
@@ -80,15 +75,13 @@ def get_image_links(data):
 
 def download_images(links):
     """
-    Passes in a list of links
-    Args:
-        links(list)
-    Returns:
-        Images of paintings to download
+    Passes in a list of links to download
+    :param links (list):
+    :return Images downloaded into the assets folder:
     """
 
     for link in links:
-        print(link)
+        print(link) #print link to be processed
         try:
             response = requests.get(link,
                                     timeout=settings.METADATA_REQUEST_TIMEOUT, stream=True)
@@ -96,21 +89,25 @@ def download_images(links):
             print(e)
             sys.exit(1)
 
-        find_index = link.rfind('/')
-        image_name  = link[find_index+1:]
+        image_name  = link.rsplit('/', 1)[1]
+        print(image_name)
 
         file_location = settings.ASSET_PATH.joinpath(image_name)
 
         with open(str(file_location), 'wb') as outfile:
                 shutil.copyfileobj(response.raw, outfile)
 
-            #TODO: REFACTOR WITH .rsplit('/', 1)[1]
 
 
 def upload_images_to_s3(directory):
+    """
+    Upload images to S3 bucket if they end with png or jpg
+    :param directory:
+    :return: null
+    """
 
     for f in directory.iterdir():
-        if str(f).endswith(('.png', '.jpg')):
+        if str(f).endswith(('.png', '.jpg', '.jpeg')):
             full_file_path = str(f.parent) + "/" + str(f.name)
             file_name = str(f.name)
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
@@ -119,6 +116,11 @@ def upload_images_to_s3(directory):
 
 
 def upload_json_to_s3(directory):
+    """
+    Upload metadata json to directory
+    :param directory:
+    :return: null
+    """
 
     for f in directory.iterdir():
         if str(f).endswith('.json'):
@@ -126,17 +128,25 @@ def upload_json_to_s3(directory):
             file_name  = str(f.name)
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
 
-    #TODO: CLEAN UP "if os.path.getsize(filename) > (max_size * 1024):"
-def resize_images
+#TODO: CLEAN UP RESIZING UTILITY
+
+def resize_images():
     pass
+        # if os.path.getsize(filename) > (max_size * 1024):
+        #     basewidth = 300
+        #     img = Image.open('fullsized_image.jpg')
+        #     wpercent = (basewidth / float(img.size[0]))
+        #      hsize = int((float(img.size[1]) * float(wpercent)))
+        #     img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+        #      img.save('resized_image.jpg')
 
 
 data = get_json()
 files = save_json(data)
 links = get_image_links(data)
 download_images(links)
-upload_images_to_s3(settings.ASSET_PATH)
-upload_json_to_s3(settings.ASSET_PATH)
+# upload_images_to_s3(settings.ASSET_PATH)
+# upload_json_to_s3(settings.ASSET_PATH)
 
 
 
