@@ -2,16 +2,23 @@
 
 *Andrei Mylnikov, "In Peaceful Fields" 1950*
 
-- **More about SovietArtBot** [README](https://github.com/veekaybee/soviet-art-bot/README.md)
-- **GitHub Repo:** [veekaybee/soviet-art-bot](https://github.com/veekaybee/soviet-art-bot)
+
 
 <a class="github-button" href="https://github.com/veekaybee/soviet-art-bot" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star soviet-art-bot on GitHub">Star</a>
 
-## Why Soviet ArtBot? 
+<a class="twitter-follow-button"
+  href="https://twitter.com/SovietArtBot"
+  data-size="large">
+Follow @SovietArtBot Here</a>
+
+- **More about SovietArtBot** [README](https://github.com/veekaybee/soviet-art-bot/README.md)
+- **GitHub Repo:** [veekaybee/soviet-art-bot](https://github.com/veekaybee/soviet-art-bot)
+
+## What's Soviet Art Bot? 
 
 
 
-## Follow SovietArtBot
+## Sample Tweet
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;Discussion of a Bad Grade&quot;<br>Sergiy Grigoriev, 1950 <a href="https://t.co/cNQ8HT6Biw">pic.twitter.com/cNQ8HT6Biw</a></p>&mdash; SovietArtBot (@SovietArtBot) <a href="https://twitter.com/SovietArtBot/status/963618544775811073?ref_src=twsrc%5Etfw">February 14, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
