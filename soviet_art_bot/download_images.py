@@ -13,7 +13,7 @@ import requests
 import PIL
 from PIL import Image
 
-import soviet_art_bot.settings as settings
+import settings
 
 # intialize connection to S3 resources
 s3 = boto3.resource('s3')
