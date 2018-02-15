@@ -2,8 +2,6 @@
 
 *Andrei Mylnikov, "In Peaceful Fields" 1950*
 
-
-
 <a class="github-button" href="https://github.com/veekaybee/soviet-art-bot" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star soviet-art-bot on GitHub">Star</a>
 
 <a class="twitter-follow-button"
@@ -11,17 +9,56 @@
   data-size="large">
 Follow @SovietArtBot Here</a>
 
-- **More about SovietArtBot** [README](https://github.com/veekaybee/soviet-art-bot/README.md)
-- **GitHub Repo:** [veekaybee/soviet-art-bot](https://github.com/veekaybee/soviet-art-bot)
-
 ## What's Soviet Art Bot? 
 
-
-
-## Sample Tweet
+A bot that tweets out a socialist realist painting, along with their painters, every six hours. 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;Discussion of a Bad Grade&quot;<br>Sergiy Grigoriev, 1950 <a href="https://t.co/cNQ8HT6Biw">pic.twitter.com/cNQ8HT6Biw</a></p>&mdash; SovietArtBot (@SovietArtBot) <a href="https://twitter.com/SovietArtBot/status/963618544775811073?ref_src=twsrc%5Etfw">February 14, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+The data comes from [WikiArt](https://www.wikiart.org/), a "non-profit project featuring some 150,000 artworks by 2,500 artists, localized in 5 languages.", from their [Socialist Realism](https://www.wikiart.org/en/paintings-by-style/socialist-realism?select=featured) category. 
+
+## How does Soviet Art Work? 
+
+For an extremely in-depth post, please read [here.](http://veekaybee.github.io/)
+
+Tools: 
+
++ Python
+  + Requests
+  + Twython
+  + Boto
++ AWS
+  + S3
+  + Lambda
+  + Code Pipeline
++ GitHub
+  + Git
+  +Travis-CI integration 
+
+
+The high-level overview: 
+
++ Paintings are downloaded through the WikiArt API
++ Local processing cleans up JSON metadata
++ Paintings and metadata are uploaded to an S3 bucket on AWS
++ A Lambda picks up the files from S3 and tweets out a timed cron job to Twitter through Twython
++ You see beautiful socialist realism art
+
+# GitHub Repo
+
+Find all the code here: 
+[veekaybee/soviet-art-bot](https://github.com/veekaybee/soviet-art-bot)
+
+
+## ToDo
+
+1) Source more paintings. WikiArt is fantastic, but has only 500ish paintngs available in the socialist realism category. I'd like to find more sources with high-quality metadata and a significant collection of artworks. 
+2) Fix the code so that no painting repeats more than once a week. That seems like the right amount of time for Twitter followers to not get annoyed. 
+3) Create a front-end where anyone can upload a work of socialist realism for the bot to tweet out. 
+4) Machine learning and deep learning potential possibilities: 
+  + Mash with #devart to see if the bot can create fun headlines for paintings based on painting content 
+  + Extract colors from artworks by genre and see how they differ between genres
 
 
 ## About Me
