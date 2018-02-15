@@ -14,8 +14,8 @@ PAINTINGS_REQUEST_TIMEOUT = 5 * 60
 
 #Local filepaths
 
-BASE_PATH = Path('/Users/vboykis/Desktop/soviet_art_bot')
-ASSET_PATH = BASE_PATH / 'assets'
+ASSET_PATH = Path('assets')
+print(ASSET_PATH.absolute())
 
 
 #AWS Locations
