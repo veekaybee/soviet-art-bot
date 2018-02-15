@@ -4,3 +4,4 @@ requests==2.14.2
 Pillow==5.0.0
 setuptools==38.5.1
 twython==3.6.0
+pytest==3.4.0
