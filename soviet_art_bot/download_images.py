@@ -90,7 +90,6 @@ def download_images(links):
             sys.exit(1)
 
         image_name  = link.rsplit('/', 1)[1]
-        print(image_name)
 
         file_location = settings.ASSET_PATH.joinpath(image_name)
 
@@ -112,7 +111,6 @@ def upload_images_to_s3(directory):
             file_name = str(f.name)
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
             print(f,"put")
-
 
 
 def upload_json_to_s3(directory):
