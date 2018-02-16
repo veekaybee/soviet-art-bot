@@ -54,11 +54,17 @@ Find all the code here:
 ## ToDo
 
 1) Source more paintings. WikiArt is fantastic, but has only 500ish paintngs available in the socialist realism category. I'd like to find more sources with high-quality metadata and a significant collection of artworks. 
+
 2) Fix the code so that no painting repeats more than once a week. That seems like the right amount of time for Twitter followers to not get annoyed. 
+
 3) Create a front-end where anyone can upload a work of socialist realism for the bot to tweet out. 
+
 4) Machine learning and deep learning potential possibilities: 
+
   + Mash with #devart to see if the bot can create fun headlines for paintings based on painting content 
   + Extract colors from artworks by genre and see how they differ between genres
+  + See if there's a way to filter out artworks with nudity/questionable content
+  
 
 
 ## About Me
