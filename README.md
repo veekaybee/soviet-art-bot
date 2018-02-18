@@ -20,20 +20,29 @@ The data comes from [WikiArt](https://www.wikiart.org/), a "non-profit project f
 
 ## How does Soviet Art Work? 
 
-For an extremely in-depth post, please read [here.](http://veekaybee.github.io/)
+For an extremely in-depth post, please read [here.](http://veekaybee.github.io/2018/02/19/creating-a-twitter-art-bot/)
 
 Tools: 
 
 + Python
+
   + Requests
+  
   + Twython
+  
   + Boto
 + AWS
+
   + S3
+  
   + Lambda
+  
   + Code Pipeline
+  
 + GitHub
+
   + Git
+  
   +Travis-CI integration 
 
 
