@@ -22,6 +22,9 @@ To read a really long post on Soviet Art Bot, [click here.](http://veekaybee.git
 
 ![High-level](https://raw.githubusercontent.com/veekaybee/veekaybee.github.io/master/images/high-level-flow.png)
 
+Low-Level
+![architecture](https://raw.githubusercontent.com/veekaybee/veekaybee.github.io/master/images/architecture.png)
+
 ## Installation
 
 Not yet! In the works. 
