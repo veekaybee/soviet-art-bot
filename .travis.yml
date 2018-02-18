@@ -10,8 +10,8 @@ install:
 before_script:
     export PYTHONPATH=$PYTHONPATH:$(pwd)
 script:
-    pytest
-deploy:
-     - sh lambda_deploy.sh
+    py.test
+script:
+     - bash lambda_deploy.sh
 on:
     branch: dev
