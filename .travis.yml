@@ -7,4 +7,11 @@ python:
 install:
 - pip install .
 - pip install -r requirements.txt
-script: pytest
+before_script:
+    export PYTHONPATH=$PYTHONPATH:$(pwd)
+script:
+    pytest
+deploy:
+    bash lambda_deploy.sh
+on:
+    branch: dev
