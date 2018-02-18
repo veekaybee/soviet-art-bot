@@ -14,7 +14,7 @@ To see it in action, follow [@SovietArtBot](https://twitter.com/SovietArtBot)
 
 ## Why Soviet Art Bot
 
-TL;DR
+The TL;DR: Putting art on Twitter is fun and a great way to learn more about AWS. 
 
 To read a really long post on Soviet Art Bot, [click here.](http://veekaybee.github.io/2018/02/19/creating-a-twitter-art-bot/) 
 
