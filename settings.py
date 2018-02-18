@@ -13,9 +13,13 @@ METADATA_REQUEST_TIMEOUT = 2 * 60
 PAINTINGS_REQUEST_TIMEOUT = 5 * 60
 
 #Local filepaths
+TOP_LEVEL_PATH = Path('/Users/vboykis/Desktop/soviet_art_bot/')
+ASSET_PATH = TOP_LEVEL_PATH/ 'assets'
 
-ASSET_PATH = Path('assets')
-print(ASSET_PATH.absolute())
+# Metadata filename
+
+METADATA_FILENAME = 'art_metadata.json'
+MEDTADATA_FILE = ASSET_PATH.joinpath(METADATA_FILENAME)
 
 
 #AWS Locations

@@ -15,8 +15,12 @@ ssm = boto3.client('ssm')
 
 
 def lambda_handler(event, context):
+
+    # S3 Resource Listing
     bucket_name = 'soviet-art-bot'
     metadata = 'art_metadata.json'
+
+    # Pull data from S3 Bucket
 
     try:
         data = s3.get_object(Bucket=bucket_name, Key=metadata)
@@ -26,10 +30,7 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY')['Parameter']['Value']
-    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET')['Parameter']['Value']
-    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN')['Parameter']['Value']
-    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET')['Parameter']['Value']
+    # Return ordered dict of images with key as painting name for matching to filename
 
     indexed_json = defaultdict()
 
@@ -49,6 +50,8 @@ def lambda_handler(event, context):
         except KeyError:
             indexed_json[img_link] = (values)
 
+    # Shuffle through images to select random one
+    # TODO: Put images that have already been posted in "purgatory" for 2 weeks so no repetition
     single_image_metadata = random.choice(list(indexed_json.items()))
 
     url = single_image_metadata[0]
@@ -58,7 +61,16 @@ def lambda_handler(event, context):
 
     print(url, painter, title, year)
 
+    # Twitter Access
+
+    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY')['Parameter']['Value']
+    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET')['Parameter']['Value']
+    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN')['Parameter']['Value']
+    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET')['Parameter']['Value']
+
     twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
+
+    # Load painting file from S3 to Lambda to upload from Lambda
 
     try:
 
@@ -71,6 +83,7 @@ def lambda_handler(event, context):
         print("file moved to /tmp")
         print(os.listdir(tmp_dir))
 
+        # Tweet status
         with open(path, 'rb') as img:
             print("Path", path)
             twit_resp = twitter.upload_media(media=img)

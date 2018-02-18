@@ -1,7 +1,7 @@
 import pytest
 import os
 
-import soviet_art_bot.download_images as dl
+import soviet_art_bot.soviet_art_bot.download_images as dl
 import settings
 
 

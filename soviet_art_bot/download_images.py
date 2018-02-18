@@ -19,6 +19,14 @@ import settings
 s3 = boto3.resource('s3')
 s3_client = boto3.client('s3', 'us-east-1')
 
+def parse_data(paints_list,data):
+    """
+    Extends a list of paintings
+    :param paints_list:
+    :param data:
+    :return:
+    """
+    paints_list.extend(data)
 
 def get_json():
     """
@@ -32,15 +40,13 @@ def get_json():
         print(page, "pages processed")
         try:
             response = requests.get(url, timeout=settings.METADATA_REQUEST_TIMEOUT)
-            data = response.json()
-            data = data['Paintings']
-            data_list.extend(data)
+            data = response.json()['Paintings']
+            parse_data(data_list, data)
         except requests.exceptions.RequestException as e:
             print(e)
             sys.exit(1)
 
     return data_list
-
 
 
 def save_json(data):
@@ -51,7 +57,7 @@ def save_json(data):
     """
     data = json.dumps(data)
 
-    with open('%s/art_metadata.json' % settings.ASSET_PATH, 'w') as outfile:
+    with settings.MEDTADATA_FILE.open('w') as outfile:
         outfile.write(data)
 
 def get_image_links(data):
@@ -66,22 +72,20 @@ def get_image_links(data):
     print(data)
 
     for painting in data:
-        painting_link = (painting['image'])
-        painting_links.append(painting_link)
+        parse_data(painting_links, painting['image'])
 
     return painting_links
 
 
-
 def download_images(links):
     """
-    Passes in a list of links to download
+    Passes in a list of links pointing to image files to download
     :param links (list):
     :return Images downloaded into the assets folder:
     """
 
     for link in links:
-        print(link) #print link to be processed
+        print("Processing", link)
         try:
             response = requests.get(link,
                                     timeout=settings.METADATA_REQUEST_TIMEOUT, stream=True)
@@ -95,7 +99,6 @@ def download_images(links):
 
         with open(str(file_location), 'wb') as outfile:
                 shutil.copyfileobj(response.raw, outfile)
-
 
 
 def upload_images_to_s3(directory):
@@ -138,15 +141,17 @@ def resize_images():
         #     img = img.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
         #      img.save('resized_image.jpg')
 
+def main():
+    pass
+    # data = get_json()
+    # files = save_json(data)
+    # links = get_image_links(data)
+    # # download_images(links)
+    # # upload_images_to_s3(settings.ASSET_PATH)
+    # # upload_json_to_s3(settings.ASSET_PATH)
 
-data = get_json()
-files = save_json(data)
-links = get_image_links(data)
-download_images(links)
-# upload_images_to_s3(settings.ASSET_PATH)
-# upload_json_to_s3(settings.ASSET_PATH)
-
-
+if __name__ == '__main__':
+   main()
 
 
 
