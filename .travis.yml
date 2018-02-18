@@ -12,6 +12,6 @@ before_script:
 script:
     pytest
 deploy:
-    bash lambda_deploy.sh
+     - sh lambda_deploy.sh
 on:
     branch: dev
