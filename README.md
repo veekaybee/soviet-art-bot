@@ -14,11 +14,18 @@ To see it in action, follow [@SovietArtBot](https://twitter.com/SovietArtBot)
 
 ## Why Soviet Art Bot
 
+TL;DR
+
+To read a really long post on Soviet Art Bot, [click here.](http://veekaybee.github.io/2018/02/19/creating-a-twitter-art-bot/) 
+
 ## Architecture 
+
+![High-level](https://raw.githubusercontent.com/veekaybee/veekaybee.github.io/master/images/high-level-flow.png)
 
 ## Installation
 
-
-
+Not yet! In the works. 
 
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
+It's really the alpha  Wild Wild West stages of this project so I don't have any specific guidelines. That said, if you see something, say something. Pull requests welcome. 
