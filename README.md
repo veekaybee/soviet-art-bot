@@ -31,6 +31,7 @@ Tools:
   + Twython
   
   + Boto
+  
 + AWS
 
   + S3
@@ -44,6 +45,10 @@ Tools:
   + Git
   
   +Travis-CI integration 
+  
+  Here's the architecture scribble:
+  
+  ![architecture](https://raw.githubusercontent.com/veekaybee/veekaybee.github.io/master/images/architecture.png)
 
 
 The high-level overview: 
