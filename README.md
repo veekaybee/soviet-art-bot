@@ -24,27 +24,11 @@ For an extremely in-depth post, please read [here.](http://veekaybee.github.io/2
 
 Tools: 
 
-+ Python
-
-  + Requests
-  
-  + Twython
-  
-  + Boto
-  
-+ AWS
-
-  + S3
-  
-  + Lambda
-  
-  + Code Pipeline
-  
-+ GitHub
-
-  + Git
-  
-  +Travis-CI integration 
+| Python   | AWS    | VCS/CI    |
+|----------|--------|-----------|
+| Requests | boto3  | GitHub    |
+| Twython  | Lambda | Travis-CI |
+| pytest   | S3     |           |
   
   Here's the architecture scribble:
   
