@@ -1,31 +1,35 @@
 language: python
-python:
-- 3.4
-- 3.5
-- 3.6
-install:
-- pip install .
-- pip install -r requirements.txt
-- pip install awscli
 
-before_script:
-export PYTHONPATH=$PYTHONPATH:$(pwd)
-- mkdir -p ~/.aws
-- echo "Mkdir"
-- cat << EOF > ~/.aws/credentials
-[default]
-aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
-EOF
+python: '3.6'
 
-cat ~/.aws/credentials
-script:
-- bash lambda_deploy.sh
-true:
-  branch: dev
 env:
   global:
   - secure: WazFdG9OdKY2MU/4KXbjS8adFSbdxsji27C5M41cSIVBfcEUrOvManMhOP6VpykdHcUXg/IYPTMqGs33dUXq+abZ0fxARdAZjpfAAY8lx95vKMmQxsgoqExWTzjZoXC+uEYSGy9gnSJs03sFkwmz0dfB/FLqXrgHa00oucQqFSzdruJW0Tsnq0kw1uVwFSUItfztsoEwrxQAsyy+pAW9Gs3pLVeUVzKDPXd/YVc1bOuufuMSw5nUQaeI6Ah8IAxQom5uws1X9QfDMRbIiaY2FHInusJP9bQPlVfiqzhHsLNLM1L4z7/3EIuI9zLJj3b9MJCmyuTsWQ4FRkeQ8ZZYDPHw/B2DlSDMXK1xfHfPZYPDBNxdq//dDJwB7rmWjB1fftNpZEqf4GvErT4iAj/hEezAyFT9A4aLO8BqqcSanahBT8nxWDykTM3DjYEEXCFoqZnoAMHYZ1dUZfPfKI7qTJHm00YZ/XyClto9FsFz8GvyVvSB9v3BUi/K8lMT8TY5+ejKFSKomC3JS5DhKB0Pnig/y+sjRN8BzDZA1DrbiyFwrgYXjw5GKNwAq1luPJ397BapIMI52QY469NrjRhtvGc+KSapJm7BZPIWB3TTs4yLDy8BvTcLd9JPp1Nd1bBuwxQ5dC/7un8xM7lzKYvmZNNF2YZynsl23mEg+cuPyxw=
   - secure: KS/2FcbZg57BVX+iyVfaZIkWoxyO0cg3qOiYJccRc9oKVS7mBfnZ0KRgetfBrNl86CeGa+DEIdywrTZWle1Bfc38N9MgZuzYe831q/JlABcKgH7EC7XMM0PBq/d3rus4p73i4mcvvyq3Q8XZSI/7GitjteUZ9ILL+a/YmOtJEcdyy1wUz6ncRTJOVzWZfclOM+LDJijQritVJmCFCqKacuRGLRdbVE0AZ4RWJUdworXTghzRt9q+Eoi5E4CNg6QQkUi0d403YTX4kJWiIa/yXBEE6UjhdXLQXwuRJj/0sjLzIcYQ3mElRmKNkrVzKf/jA6iHqLVYBTHymXfkY7Cfz1AhNTo7DPctd9HMy5JQIu4aXQ0Maj0IOUqIUUJJ3Pj2+m7tQA3LSk0iUnIVsUit6n0zW/Tfh2ztpT0y0UTejZsXYcstk7nABX/5AqdUKkBCwbffjLXwyDozZ1Y+cMcyRvhjWEYv1HTALo1CRoYVoDkAtd8h3RY79K40yBcpHy5WqJfVAXscng1FVVC/TlmYXg0H0A486NoJ5JixvWYZfqtQXgYXxvEKrp6a09MKe6fCHdCZQ4mGl5t0k45jjgKrXcaGXX4OoAlQyhlY+6f4r1FPOO2UxpLqjlfNlDXZqbD7Yk5LuzGrnCSfOH5XMnP3iadetSdU8iqEG0BDYeW1SaI=
   - secure: uOSSOBVwy2SaTFJhsi0LL4l/qqAwU8B3cgn8NEOCIV1Yo9bRE54New06anTDW8u5wW2c1XESfq/Fr8ROOUfuceaj1NuaEoqWh3eEnjCLjhT4HL8QIdwVpT6t47G+Ug70yWkqHC3KQCbwYHAtWGqhdicxDTu1AiirWesc/vHt1WGjrwvnCY3V5pJ0GKL125zkBoeapqqGruMFaMIAJudzmgCm3TXWHpBMOi2/f65htecVA8nkEj/iPRD/XnR09JwSoIRcSASk0DWrDXd5DJHJkLTDKapwKC0U158LHGP59Lhf+1s4lKtrKnhKy39AW5yR9lWRw1TiFswI0r18kiWlNQRRE+SmLfiZz4BBazsZxAMsJIIMfqCCyVwQ9TpqghRm0B3Hptnhh2CWDAHQB5I/NGeAwsS5fJ4fjuvZmw9CzVerXHSAK4ETAGcphmACP2wYssrWvZ3epPLMlJbjy9t7sy9VAolW5RdJ38q7PzgU3wYWDMqgD3hhtBoWDx9FtftIIPk8OXt2J0rQhAE7KrkJnhGUvOKA4lZ9xr4j1BwrOhrmGobe4uYK0uUS42B5dfyg6g4jNiFdORJ/u4z14F9rHHXUfZD2BHVOrU5BHKY55SIqZdXtmexVhM3UGnTafWRpUVMQIm1nkDd02sMu2ZSsVeOmxE2MpV5oMJrbUy+5uQ8=
   - secure: OdkdcA+CQv1XpdsnIGnQnBUO1hN4TxSXCxCYQBnXRuN4lc289lokKWfoJpjJH5Jy8s/3fPj9xkDcmiFVY3/vdR6qcdoGy346Eq3qN/L1XVpJNa2DlvAM6cj2bmmmWzfmhf1zcSMaDbXtnIVXVthIt1VgbFPZYQjJQa99HEmNk6vH2yUK2YbDAwKhgK5f6cruVbMwMdieYPzSl08o61GJHR8OrQqm1GLn4BA2xVgDCD6N6y2goIJvbfB31Xcn7AgphTfpVmUUgbJwfpRinZzLf+o/B6/sTSwCV6/lcYgazNchUPMYrC1qV5UIMjFUPBVGxfrs8s3Wglh0zzqSEQpw8m5sACi7KoiDQyiee1Pjx+SL+N1rUFSGgLmPx+01DJQ2suhwX1OVBDeqjohBeU81wyCYbJA8A3S8k4N1iaM3TM++UrXf8ZRHTd43z6Hc4pBeyJi+TRY1UJEcc83W0TDmonY28xHP178fvjCDwTxagB7zZxHPuQNfgyrt2UCeZu2GLtG2+frhG/bu1Zb04CazmUk2oQDXqL6d5RNVCaSFPB+u9Uqm5LjEssVLHzsOOyhHfc9zeVsNX3TR3GXgyMEiSMCSut2HSTFxCa9+1E2t6O0ZqZu+2qGcf0vALGqngQ55X0Hq7IcXoWL9fQXUEED/lYzV7CV9R9W2QTS7SA86EtA=
+  - AWS_DEFAULT_REGION=us-east-1
+
+install:
+  - pip install .
+  - pip install -r requirements.txt
+  - pip install awscli
+
+before_script:
+  export PYTHONPATH=$PYTHONPATH:$(pwd)
+  - mkdir -p ~/.aws
+  - echo "Mkdir"
+  - cat << EOF > ~/.aws/credentials
+[default]
+aws_access_key_id = ${AWS_ACCESS_KEY_ID}
+aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
+EOF
+  - cat ~/.aws/credentials
+
+script:
+- bash lambda_deploy.sh
+
+
+
+true:
+  branch: dev
