@@ -9,7 +9,7 @@ install:
 - pip install awscli
 before_script:
 export PYTHONPATH=$PYTHONPATH:$(pwd)
-- bash ecr_credentials.sh
+./ecr_credentials.sh
 script:
 - bash lambda_deploy.sh
 true:
