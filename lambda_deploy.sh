@@ -6,7 +6,7 @@ n_libs_dir_name="native_libs"
 deploy_bundle_name="lambda_bundle.zip"
 
 lambda_function_name="soviet_lambda_test"
-s3_deploy_bucket="soviet-art-deploy"
+s3_deploy_bucket="soviet-art-test"
 s3_deploy_key=${deploy_bundle_name}
 
 if [ -z "${AWS_CLI_PROFILE}" ]; then
