@@ -61,7 +61,7 @@ aws s3 cp ${deploy_bundle_path} s3://${s3_deploy_bucket}/${s3_deploy_key} \
 
 echo "Updating Lambda functions ..."
 
-aws lambda update-function-code --region us-east-1 \ --function-name ${lambda_function_name} \
+aws lambda update-function-code \ --region us-east-1 \ --function-name ${lambda_function_name} \
     --s3-bucket ${s3_deploy_bucket} --s3-key ${s3_deploy_key} \
     --publish ${aws_cli_profile} \
     && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
