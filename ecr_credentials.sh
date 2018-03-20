@@ -1,6 +1,6 @@
 mkdir -p ~/.aws
 
-echo "mkdir"
+echo "Mkdir"
 
 cat << EOF > ~/.aws/credentials
 [default]
