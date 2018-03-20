@@ -45,39 +45,39 @@ def lambda_handler(event, context):
         # return only image name at end of URL
         find_index = value['image'].rfind('/')
         img_suffix = value['image'][find_index + 1:]
-        img_link = "https://s3.amazonaws.com/soviet-art-bot/" + img_suffix
+        img_link = img_suffix
 
         try:
             indexed_json[img_link].append(values)
         except KeyError:
             indexed_json[img_link] = (values)
 
+    single_image_metadata = random.choice(list(indexed_json.items()))
 
-    metadata = random.choice(list(indexed_json.items()))
+    url = single_image_metadata[0]
+    painter = single_image_metadata[1][0]
+    title = single_image_metadata[1][1]
+    year = single_image_metadata[1][2]
 
-    url =  metadata[0]
-    painter = metadata[1][0]
-    title = metadata[1][1]
-    year = metadata[1][2]
-
-    print(url, painter, title,year)
+    print(url, painter, title, year)
 
     twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
 
     try:
 
         tmp_dir = tempfile.gettempdir()
-        path = os.path.join(tmp_dir, key)
+        call('rm -rf /tmp/*', shell=True)
+        path = os.path.join(tmp_dir, url)
+        print(path)
 
-        s3_resource.Bucket(bucket_name).download_file(img_suffix, path)
+        s3_resource.Bucket(bucket_name).download_file(url, path)
         print("file moved to /tmp")
         print(os.listdir(tmp_dir))
 
-        with open("/tmp/%s" % object, 'rb') as img:
-            print(img)
+        with open(path, 'rb') as img:
+            print("Path", path)
             twit_resp = twitter.upload_media(media=img)
-            print(twit_resp)
-            client.update_status(status="Heres more photos for u", media_ids=[twit_resp['media_id']])
+            twitter.update_status(status="\"%s\"\n%s, %s" % (title, painter, year), media_ids=twit_resp['media_id'])
 
     except TwythonError as e:
         print(e)
