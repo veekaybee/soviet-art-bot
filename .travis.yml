@@ -12,24 +12,23 @@ env:
   - AWS_DEFAULT_REGION=us-east-1
 
 install:
-  - pip install .
-  - pip install -r requirements.txt
-  - pip install awscli
+- pip install .
+- pip install -r requirements.txt
+- pip install awscli
 
 before_script:
-  export PYTHONPATH=$PYTHONPATH:$(pwd)
-  - mkdir -p ~/.aws
-  - echo "Mkdir"
-  - cat << EOF > ~/.aws/credentials
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+- mkdir -p ~/.aws
+- echo "Mkdir"
+- cat << EOF > ~/.aws/credentials
 [default]
 aws_access_key_id = ${AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
 EOF
-  - cat ~/.aws/credentials
+- cat ~/.aws/credentials
 
 script:
 - bash lambda_deploy.sh
-
 
 
 true:
