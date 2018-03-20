@@ -14,6 +14,8 @@ s3_resource = boto3.resource('s3', region_name='us-east-1')
 s3 = boto3.client('s3')
 ssm = boto3.client('ssm')
 
+#  @SovietArtBotTes
+
 
 def lambda_handler(event, context):
     bucket_name = 'soviet-art-bot'
@@ -27,10 +29,10 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY')['Parameter']['Value']
-    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET')['Parameter']['Value']
-    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN')['Parameter']['Value']
-    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET')['Parameter']['Value']
+    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY_TEST')['Parameter']['Value']
+    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
+    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
+    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
 
     indexed_json = defaultdict()
 
