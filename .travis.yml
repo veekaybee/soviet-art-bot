@@ -1,15 +1,14 @@
 language: python
 python:
-- '3.4'
-- '3.5'
-- '3.6'
-- pypy3.5
+- 3.4
+- 3.5
+- 3.6
 before_install:
     -bash ecr_credentials.sh
 install:
 - pip install .
 - pip install -r requirements.txt
-- pip install --user awscli # install aws cli w/o sudo
+- pip install --user awscli
 before_script: export PYTHONPATH=$PYTHONPATH:$(pwd)
 script:
 - bash lambda_deploy.sh
