@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #system imports
 import json
 import boto3
@@ -9,7 +7,6 @@ import subprocess
 
 
 import random
-import html
 
 from collections import defaultdict
 from twython import Twython, TwythonError
@@ -19,6 +16,7 @@ s3_resource = boto3.resource('s3', region_name='us-east-1')
 s3 = boto3.client('s3')
 ssm = boto3.client('ssm')
 
+#  @SovietArtBotTes
 
 
 def lambda_handler(event, context):
@@ -43,9 +41,7 @@ def lambda_handler(event, context):
 
     for value in json_data:
         artist = value['artistName']
-        artist = html.unescape(artist)
         title = value['title']
-        title = html.unescape(title)
         year = value['year']
         values = [artist, title, year]
 
@@ -63,9 +59,7 @@ def lambda_handler(event, context):
 
     url = single_image_metadata[0]
     painter = single_image_metadata[1][0]
-    painter = html.unescape(painter)
-    title = single_image_metadata[1][1]
-    title = html.unescape(title)
+    title = single_image_metadata[1][1].decode('utf-8')
     year = single_image_metadata[1][2]
 
     print(url, painter, title, year)
@@ -86,7 +80,6 @@ def lambda_handler(event, context):
         with open(path, 'rb') as img:
             print("Path", path)
             twit_resp = twitter.upload_media(media=img)
-            print(twit_resp)
             twitter.update_status(status="\"%s\"\n%s, %s" % (title, painter, year), media_ids=twit_resp['media_id'])
 
     except TwythonError as e:
