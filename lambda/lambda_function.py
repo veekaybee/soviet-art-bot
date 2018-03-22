@@ -3,6 +3,7 @@ import json
 import boto3
 import tempfile
 import os
+import subprocess
 
 
 import random
@@ -57,7 +58,7 @@ def lambda_handler(event, context):
 
     url = single_image_metadata[0]
     painter = single_image_metadata[1][0]
-    title = single_image_metadata[1][1]
+    title = single_image_metadata[1][1].decode('utf-8')
     year = single_image_metadata[1][2]
 
     print(url, painter, title, year)
@@ -67,7 +68,7 @@ def lambda_handler(event, context):
     try:
 
         tmp_dir = tempfile.gettempdir()
-        call('rm -rf /tmp/*', shell=True)
+        subprocess.call('rm -rf /tmp/*', shell=True)
         path = os.path.join(tmp_dir, url)
         print(path)
 
