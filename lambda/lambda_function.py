@@ -31,10 +31,10 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY_TEST')['Parameter']['Value']
-    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
-    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
-    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
+    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY')['Parameter']['Value']
+    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET')['Parameter']['Value']
+    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN')['Parameter']['Value']
+    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET')['Parameter']['Value']
 
 
 
