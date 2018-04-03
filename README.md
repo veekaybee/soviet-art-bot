@@ -2,7 +2,6 @@
 
 # Soviet Art Bot v.10
 
-~~Under active development~~
 
 [![Build Status](https://travis-ci.org/veekaybee/soviet-art-bot.svg?branch=master)](https://travis-ci.org/veekaybee/soviet-art-bot) 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
