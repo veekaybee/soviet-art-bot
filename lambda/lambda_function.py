@@ -7,16 +7,10 @@ import os
 import subprocess
 from six.moves.html_parser import HTMLParser
 import random
-import dotenv
-
-dotenv.load_dotenv(os.path.join(here, "../.env"))
-dotenv.load_dotenv(os.path.join(here, "../../.env"))
-
 from collections import defaultdict
 from twython import Twython, TwythonError
 import html
 
-from settings import CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_SECRET
 
 session = boto3.Session()
 s3_resource = boto3.resource('s3', region_name='us-east-1')
@@ -43,23 +37,23 @@ def lambda_handler(event, context):
     # Load file from the path.
     load_dotenv(dotenv_path)
 
-    # Twitter Keys
-
-    CONSUMER_KEY = os.getenv('CONSUMER_KEY')
-    CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
-    ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-    ACCESS_SECRET = os.getenv('ACCESS_SECRET')
-
-    # Twitter Keys
-    # CONSUMER_KEY = settings.CONSUMER_KEY
-    # CONSUMER_SECRET = settings.CONSUMER_SECRET
-    # ACCESS_TOKEN = settings.ACCESS_TOKEN
-    # ACCESS_SECRET = settings.ACCESS_SECRET
-
-
-    # CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
-    # ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
-    # ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
+    # # Twitter Keys
+    #
+    # CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+    # CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+    # ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+    # ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+    #
+    # # Twitter Keys
+    # # CONSUMER_KEY = settings.CONSUMER_KEY
+    # # CONSUMER_SECRET = settings.CONSUMER_SECRET
+    # # ACCESS_TOKEN = settings.ACCESS_TOKEN
+    # # ACCESS_SECRET = settings.ACCESS_SECRET
+    #
+    #
+    # # CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
+    # # ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
+    # # ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
 
     print("Got keys")
 

@@ -83,13 +83,9 @@ aws lambda update-function-code --function-name ${lambda_function_name} \
     && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
 
 aws lambda update-function-configuration \
-  --region us-east-1 \
-  --function-name soviet_lambda_dev \
-  --role arn:aws:iam::482603847407:role/lambda_basic_execution \
-  --code S3Bucket=soviet-art-bot-dev,S3Key=lambda_bundle_dev.zip \
+  --region u'us-east-1' \
+  --function-name ${lambda_function_name} \
   --environment Variables={CONSUMER_KEY="${lines[2]}",CONSUMER_SECRET="${lines[3]}", ACCESS_TOKEN="${lines[1]}", ACCESS_SECRET="${lines[0]}"} \
-  --handler lambda_function.lambda_handler\
-  --runtime python3.6 \
-  --profile default
+  && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
 
 echo "Functions and variables updated ..."
