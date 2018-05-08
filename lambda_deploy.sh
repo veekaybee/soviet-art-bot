@@ -3,11 +3,25 @@ dist_dir_name="dist"
 proj_file_names=("lambda")
 pip_env_dir_name="dev"
 n_libs_dir_name="native_libs"
-deploy_bundle_name="lambda_bundle.zip"
 
-lambda_function_name="soviet_lambda_test"
-s3_deploy_bucket="soviet-art-test"
-s3_deploy_key=${deploy_bundle_name}
+
+# Use lambda versioning
+if [[ $TRAVIS_BRANCH == 'dev' ]]; then
+then
+    lambda_function_name="soviet_lambda_$branch:1"
+    s3_deploy_bucket="soviet-art-bot-$branch"
+    s3_deploy_key=${deploy_bundle_name}
+    deploy_bundle_name="lambda_bundle_$branch.zip"
+elif [[ $TRAVIS_BRANCH == 'master' ]]; then
+    lambda_function_name="soviet_lambda_$branch:1"
+    s3_deploy_bucket="soviet-art-bot-$branch"
+    s3_deploy_key=${deploy_bundle_name}
+    deploy_bundle_name="lambda_bundle_$branch.zip"
+fi
+
+#lambda_function_name="soviet_test:1"
+#s3_deploy_bucket="soviet-art-test"
+#s3_deploy_key=${deploy_bundle_name}
 
 if [ -z "${AWS_CLI_PROFILE}" ]; then
    aws_cli_profile=""

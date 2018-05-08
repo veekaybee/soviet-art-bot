@@ -1,6 +1,7 @@
 language: python
 python:
 - 3.6
+before_install: "./build-env.sh"
 install:
 - pip install .
 - pip install -r requirements.txt
@@ -8,10 +9,12 @@ install:
 - pip install twython -t lambda/
 before_script: export PYTHONPATH=$PYTHONPATH:$(pwd)
 script:
+- bash build_env.sh
 - bash ecr_credentials.sh
 - bash lambda_deploy.sh
 true:
   branch: dev
+  branch: master
 env:
   global:
   - secure: WazFdG9OdKY2MU/4KXbjS8adFSbdxsji27C5M41cSIVBfcEUrOvManMhOP6VpykdHcUXg/IYPTMqGs33dUXq+abZ0fxARdAZjpfAAY8lx95vKMmQxsgoqExWTzjZoXC+uEYSGy9gnSJs03sFkwmz0dfB/FLqXrgHa00oucQqFSzdruJW0Tsnq0kw1uVwFSUItfztsoEwrxQAsyy+pAW9Gs3pLVeUVzKDPXd/YVc1bOuufuMSw5nUQaeI6Ah8IAxQom5uws1X9QfDMRbIiaY2FHInusJP9bQPlVfiqzhHsLNLM1L4z7/3EIuI9zLJj3b9MJCmyuTsWQ4FRkeQ8ZZYDPHw/B2DlSDMXK1xfHfPZYPDBNxdq//dDJwB7rmWjB1fftNpZEqf4GvErT4iAj/hEezAyFT9A4aLO8BqqcSanahBT8nxWDykTM3DjYEEXCFoqZnoAMHYZ1dUZfPfKI7qTJHm00YZ/XyClto9FsFz8GvyVvSB9v3BUi/K8lMT8TY5+ejKFSKomC3JS5DhKB0Pnig/y+sjRN8BzDZA1DrbiyFwrgYXjw5GKNwAq1luPJ397BapIMI52QY469NrjRhtvGc+KSapJm7BZPIWB3TTs4yLDy8BvTcLd9JPp1Nd1bBuwxQ5dC/7un8xM7lzKYvmZNNF2YZynsl23mEg+cuPyxw=

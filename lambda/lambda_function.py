@@ -10,6 +10,9 @@ import random
 
 from collections import defaultdict
 from twython import Twython, TwythonError
+import html
+
+from settings import CONSUMER_KEY,CONSUMER_SECRET,ACCESS_TOKEN,ACCESS_SECRET
 
 session = boto3.Session()
 s3_resource = boto3.resource('s3', region_name='us-east-1')
@@ -31,20 +34,31 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY_TEST')['Parameter']['Value']
-    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
-    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
-    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
+    # Twitter Keys
+    CONSUMER_KEY = settings.CONSUMER_KEY
+    CONSUMER_SECRET = settings.CONSUMER_SECRET
+    ACCESS_TOKEN = settings.ACCESS_TOKEN
+    ACCESS_SECRET = settings.ACCESS_SECRET
 
 
+    # CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
+    # ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
+    # ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
 
     print("Got keys")
 
     indexed_json = defaultdict()
 
+    html_escape_table = {"&": "&amp;",'"': "&quot;", "'": "&amp;#39;", "'": "&#39;", ">": "&gt;","<": "&lt;","&": "&amp;"}
+
+    def html_escape(text):
+        """Produce entities within text."""
+        return "".join(html_escape_table.get(c, c) for c in text)
+
     for value in json_data:
         artist = value['artistName']
         title = value['title']
+        title = html.escape(title)
         year = value['year']
         values = [artist, title, year]
 
@@ -62,17 +76,16 @@ def lambda_handler(event, context):
     single_image_metadata = random.choice(list(indexed_json.items()))
 
     url = single_image_metadata[0]
-    painter_raw = single_image_metadata[1][0]
-    painter= h.unescape(painter_raw)
-    title_raw = single_image_metadata[1][1]
-    title = h.unescape(title_raw)
+    painter = single_image_metadata[1][0]
+    title= single_image_metadata[1][1]
     year = single_image_metadata[1][2]
 
-    print(url, painter, painter_raw,title,title_raw,year)
+    print(url, painter, title,year)
 
     # Connect to Twitter via Twython
     try:
         twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
+        print(twitter)
     except TwythonError as e:
         print(e)
 
@@ -80,7 +93,7 @@ def lambda_handler(event, context):
     try:
 
         tmp_dir = tempfile.gettempdir()
-        subprocess.call('rm -rf /tmp/*', shell=True)
+        # subprocess.call('rm -rf /tmp/*', shell=True)
         path = os.path.join(tmp_dir, url)
         print(path)
 
