@@ -84,6 +84,6 @@ aws lambda update-function-configuration \
   --region u'us-east-1' \
   --function-name ${lambda_function_name} \
   --environment Variables={CONSUMER_KEY="${lines[2]}",CONSUMER_SECRET="${lines[3]}", ACCESS_TOKEN="${lines[1]}", ACCESS_SECRET="${lines[0]}" \
-  && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
+  && echo "Variable Update Completed Successfully" || (echo "Failed" && exit 1)
 
 echo "Functions and variables updated ..."

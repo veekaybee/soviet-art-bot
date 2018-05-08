@@ -2,8 +2,8 @@ lambda_project_home="$(pwd)"
 
 FILE=${lambda_project_home}/.env
 
-
-if [[ $TRAVIS_BRANCH == 'dev' ]]; then
+#
+#if [[ $TRAVIS_BRANCH == 'dev' ]]; then
 aws ssm get-parameters-by-path --path "/Dev" --region us-east-1 |jq -r '.Parameters[]|"\(.Name)=\(.Value)"'|sed -e 's|/Dev/||g' > $FILE
     echo "=========== $TRAVIS_BRANCH ENV ==========="
     cat $FILE
