@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+lambda_project_home="$(pwd)"
 
+FILE=${lambda_project_home}/.env
 
-FILE=".env"
 
 if [[ $TRAVIS_BRANCH == 'dev' ]]; then
 cat <<EOM >$FILE
