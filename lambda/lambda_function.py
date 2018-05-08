@@ -7,6 +7,10 @@ import os
 import subprocess
 from six.moves.html_parser import HTMLParser
 import random
+import dotenv
+
+dotenv.load_dotenv(os.path.join(here, "../.env"))
+dotenv.load_dotenv(os.path.join(here, "../../.env"))
 
 from collections import defaultdict
 from twython import Twython, TwythonError
@@ -34,11 +38,24 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
+    # Create .env file path.
+    dotenv_path = join(dirname(__file__), '.env')
+
+    # Load file from the path.
+    load_dotenv(dotenv_path)
+
     # Twitter Keys
-    CONSUMER_KEY = settings.CONSUMER_KEY
-    CONSUMER_SECRET = settings.CONSUMER_SECRET
-    ACCESS_TOKEN = settings.ACCESS_TOKEN
-    ACCESS_SECRET = settings.ACCESS_SECRET
+
+    CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+    CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+    ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+    ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+
+    # Twitter Keys
+    # CONSUMER_KEY = settings.CONSUMER_KEY
+    # CONSUMER_SECRET = settings.CONSUMER_SECRET
+    # ACCESS_TOKEN = settings.ACCESS_TOKEN
+    # ACCESS_SECRET = settings.ACCESS_SECRET
 
 
     # CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
