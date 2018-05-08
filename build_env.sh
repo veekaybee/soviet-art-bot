@@ -4,15 +4,11 @@ FILE=${lambda_project_home}/.env
 
 
 if [[ $TRAVIS_BRANCH == 'dev' ]]; then
-cat <<EOM >$FILE
-aws ssm get-parameters-by-path --path "/Dev" |jq -r '.Parameters[]|"\(.Name)=\(.Value)"'|sed -e 's|/Dev/||g'
-EOM
+aws ssm get-parameters-by-path --path "/Dev" |jq -r '.Parameters[]|"\(.Name)=\(.Value)"'|sed -e 's|/Dev/||g' > $FILE
     echo "=========== $TRAVIS_BRANCH ENV ==========="
     cat $FILE
 elif [[ $TRAVIS_BRANCH == 'master' ]]; then
-cat <<EOM >$FILE
-aws ssm get-parameters-by-path --path "/Prod" |jq -r '.Parameters[]|"\(.Name)=\(.Value)"'|sed -e 's|/Prod/||g'
-EOM
+aws ssm get-parameters-by-path --path "/Dev" |jq -r '.Parameters[]|"\(.Name)=\(.Value)"'|sed -e 's|/Dev/||g' > $FILE
     echo "=========== $TRAVIS_BRANCH ENV ==========="
     cat $FILE
 else
