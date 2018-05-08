@@ -7,7 +7,6 @@ n_libs_dir_name="native_libs"
 
 # Use lambda versioning
 if [[ $TRAVIS_BRANCH == 'dev' ]]; then
-then
     lambda_function_name="soviet_lambda_$branch:1"
     s3_deploy_bucket="soviet-art-bot-$branch"
     s3_deploy_key=${deploy_bundle_name}
