@@ -11,15 +11,13 @@ if [[ $TRAVIS_BRANCH == 'dev' ]]; then
     s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
     s3_deploy_key=${deploy_bundle_name}
-    declare -a vars
-    readarray -t vars < ${lambda_project_home}/.env
+    IFS=$'\n' read -d '' -r -a lines < ${lambda_project_home}/.env
 elif [[ $TRAVIS_BRANCH == 'master' ]]; then
     lambda_function_name="soviet_lambda_$TRAVIS_BRANCH"
     s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
     s3_deploy_key=${deploy_bundle_name}
-    declare -a vars
-    readarray -t vars < ${lambda_project_home}/.env
+    IFS=$'\n' read -d '' -r -a lines < ${lambda_project_home}/.env
 fi
 
 
@@ -85,7 +83,7 @@ aws lambda update-function-code --function-name ${lambda_function_name} \
 aws lambda update-function-configuration \
   --region u'us-east-1' \
   --function-name ${lambda_function_name} \
-  --environment Variables={CONSUMER_KEY="${lines[2]}",CONSUMER_SECRET="${lines[3]}", ACCESS_TOKEN="${lines[1]}", ACCESS_SECRET="${lines[0]}"} \
+  --environment Variables={CONSUMER_KEY="${lines[2]}",CONSUMER_SECRET="${lines[3]}", ACCESS_TOKEN="${lines[1]}", ACCESS_SECRET="${lines[0]}" \
   && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
 
 echo "Functions and variables updated ..."
