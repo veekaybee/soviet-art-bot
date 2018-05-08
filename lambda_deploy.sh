@@ -5,19 +5,21 @@ pip_env_dir_name="dev"
 n_libs_dir_name="native_libs"
 
 
-
-
 # Use lambda versioning
 if [[ $TRAVIS_BRANCH == 'dev' ]]; then
     lambda_function_name="soviet_lambda_$TRAVIS_BRANCH"
     s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
     s3_deploy_key=${deploy_bundle_name}
+    declare -a vars
+    readarray -t vars < .env
 elif [[ $TRAVIS_BRANCH == 'master' ]]; then
     lambda_function_name="soviet_lambda_$TRAVIS_BRANCH"
     s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
     s3_deploy_key=${deploy_bundle_name}
+    declare -a vars
+    readarray -t vars < .env
 fi
 
 
@@ -79,3 +81,15 @@ aws lambda update-function-code --function-name ${lambda_function_name} \
     --s3-bucket ${s3_deploy_bucket} --s3-key ${s3_deploy_key} \
     --publish ${aws_cli_profile} \
     && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
+
+aws lambda update-function-configuration \
+  --region us-east-1 \
+  --function-name soviet_lambda_dev \
+  --role arn:aws:iam::482603847407:role/lambda_basic_execution \
+  --code S3Bucket=soviet-art-bot-dev,S3Key=lambda_bundle_dev.zip \
+  --environment Variables={CONSUMER_KEY="${lines[2]}",CONSUMER_SECRET="${lines[3]}", ACCESS_TOKEN="${lines[1]}", ACCESS_SECRET="${lines[0]}"} \
+  --handler lambda_function.lambda_handler\
+  --runtime python3.6 \
+  --profile default
+
+echo "Functions and variables updated ..."

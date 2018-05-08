@@ -25,7 +25,6 @@ ssm = boto3.client('ssm')
 h = HTMLParser()
 
 
-
 def lambda_handler(event, context):
     bucket_name = 'soviet-art-bot'
     key = 'art_metadata.json'
