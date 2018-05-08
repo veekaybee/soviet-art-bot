@@ -7,15 +7,15 @@ n_libs_dir_name="native_libs"
 
 # Use lambda versioning
 if [[ $TRAVIS_BRANCH == 'dev' ]]; then
-    lambda_function_name="soviet_lambda_$branch:1"
-    s3_deploy_bucket="soviet-art-bot-$branch"
+    lambda_function_name="soviet_lambda_$TRAVIS_BRANCH:1"
+    s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     s3_deploy_key=${deploy_bundle_name}
-    deploy_bundle_name="lambda_bundle_$branch.zip"
+    deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
 elif [[ $TRAVIS_BRANCH == 'master' ]]; then
-    lambda_function_name="soviet_lambda_$branch:1"
-    s3_deploy_bucket="soviet-art-bot-$branch"
+    lambda_function_name="soviet_lambda_$TRAVIS_BRANCHh:1"
+    s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
     s3_deploy_key=${deploy_bundle_name}
-    deploy_bundle_name="lambda_bundle_$branch.zip"
+    deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
 fi
 
 #lambda_function_name="soviet_test:1"
