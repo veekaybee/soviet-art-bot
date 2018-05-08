@@ -83,7 +83,7 @@ aws lambda update-function-code --function-name ${lambda_function_name} \
 aws lambda update-function-configuration \
   --region u'us-east-1' \
   --function-name ${lambda_function_name} \
-  --environment Variables={"${lines[2]}","${lines[3]}", "${lines[1]}", "${lines[0]}" \
+  --environment '{"Variables":{"ACCESS_SECRET":"{lines[2]}"}, {"ACCESS_SECRET":"{lines[3]}"},{"ACCESS_SECRET":"{lines[1]}"},{"ACCESS_SECRET":"{lines[0]}"}}' \
   && echo "Variable Update Completed Successfully" || (echo "Failed" && exit 1)
 
 echo "Functions and variables updated ..."
