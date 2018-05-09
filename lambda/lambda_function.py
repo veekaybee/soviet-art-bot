@@ -35,16 +35,11 @@ def lambda_handler(event, context):
 
     indexed_json = defaultdict()
 
-    html_escape_table = {"&": "&amp;",'"': "&quot;", "'": "&amp;#39;", "'": "&#39;", ">": "&gt;","<": "&lt;","&": "&amp;"}
-
-    def html_escape(text):
-        """Produce entities within text."""
-        return "".join(html_escape_table.get(c, c) for c in text)
-
     for value in json_data:
         artist = value['artistName']
         title = value['title']
-        title = html.escape(title)
+        title = html.unescape(title)
+        title = html.unescape(title)
         year = value['year']
         values = [artist, title, year]
 
