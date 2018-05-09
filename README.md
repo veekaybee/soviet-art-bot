@@ -1,10 +1,17 @@
 
 
-# Soviet Art Bot v.10
+# Soviet Art Bot v.20
 
 
 [![Build Status](https://travis-ci.org/veekaybee/soviet-art-bot.svg?branch=master)](https://travis-ci.org/veekaybee/soviet-art-bot) 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
+Latest Updates: 
+---
+
++ Fixing the html escape issue where apostrophes get rendered into hideous HTML representations by adding some [unescapes](https://github.com/veekaybee/soviet-art-bot/blob/35d13d788e1f8237b562176bb65de20ad5d3d598/lambda/lambda_function.py#L41-L42)
++ Adding some 12-factor principles by not storing my Twitter credentials in the app, but in SSM instead and pulling them in through [Travis-CI](https://github.com/veekaybee/soviet-art-bot/blob/master/build_env.sh)
+
 
 
 ![](https://raw.githubusercontent.com/veekaybee/soviet-art-bot/gh-pages/static/in_peaceful_fields.jpg)
