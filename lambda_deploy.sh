@@ -3,11 +3,24 @@ dist_dir_name="dist"
 proj_file_names=("lambda")
 pip_env_dir_name="dev"
 n_libs_dir_name="native_libs"
-deploy_bundle_name="lambda_bundle.zip"
 
-lambda_function_name="soviet_lambda_test"
-s3_deploy_bucket="soviet-art-test"
-s3_deploy_key=${deploy_bundle_name}
+
+# Use lambda versioning
+if [[ $TRAVIS_BRANCH == 'dev' ]]; then
+    lambda_function_name="soviet_lambda_$TRAVIS_BRANCH"
+    s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
+    deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
+    s3_deploy_key=${deploy_bundle_name}
+    IFS=$'\n' read -d '' -r -a lines < ${lambda_project_home}/.env
+elif [[ $TRAVIS_BRANCH == 'master' ]]; then
+    lambda_function_name="soviet_lambda_$TRAVIS_BRANCH"
+    s3_deploy_bucket="soviet-art-bot-$TRAVIS_BRANCH"
+    deploy_bundle_name="lambda_bundle_$TRAVIS_BRANCH.zip"
+    s3_deploy_key=${deploy_bundle_name}
+    IFS=$'\n' read -d '' -r -a lines < ${lambda_project_home}/.env
+fi
+
+
 
 if [ -z "${AWS_CLI_PROFILE}" ]; then
    aws_cli_profile=""
@@ -66,3 +79,11 @@ aws lambda update-function-code --function-name ${lambda_function_name} \
     --s3-bucket ${s3_deploy_bucket} --s3-key ${s3_deploy_key} \
     --publish ${aws_cli_profile} \
     && echo "Deployment completed successfully" || (echo "Failed" && exit 1)
+
+aws lambda update-function-configuration \
+  --region u'us-east-1' \
+  --function-name ${lambda_function_name} \
+  --environment "Variables={CONSUMER_KEY=${lines[2]},CONSUMER_SECRET=${lines[3]},ACCESS_TOKEN=${lines[1]},ACCESS_SECRET=${lines[0]}}" \
+  && echo "Variable Update Completed Successfully" || (echo "Failed" && exit 1)
+
+echo "Functions and variables updated ..."

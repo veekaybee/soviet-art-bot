@@ -1,4 +1,18 @@
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Create .env file path.
+dotenv_path = join(dirname(__file__), '.env')
+
+# Load file from the path.
+load_dotenv(dotenv_path)
+
+# Twitter Keys
+
+CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+ACCESS_SECRET = os.getenv('ACCESS_SECRET')
 
 
 #Wikiart
@@ -25,3 +39,5 @@ MEDTADATA_FILE = ASSET_PATH.joinpath(METADATA_FILENAME)
 #AWS Locations
 
 BASE_BUCKET  = 'soviet-art-bot'
+
+

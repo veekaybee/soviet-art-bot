@@ -7,16 +7,16 @@ import os
 import subprocess
 from six.moves.html_parser import HTMLParser
 import random
-
 from collections import defaultdict
 from twython import Twython, TwythonError
+import html
+
 
 session = boto3.Session()
 s3_resource = boto3.resource('s3', region_name='us-east-1')
 s3 = boto3.client('s3')
 ssm = boto3.client('ssm')
 h = HTMLParser()
-
 
 
 def lambda_handler(event, context):
@@ -31,13 +31,6 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    CONSUMER_KEY = ssm.get_parameter(Name='CONSUMER_KEY')['Parameter']['Value']
-    CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET')['Parameter']['Value']
-    ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN')['Parameter']['Value']
-    ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET')['Parameter']['Value']
-
-
-
     print("Got keys")
 
     indexed_json = defaultdict()
@@ -45,6 +38,8 @@ def lambda_handler(event, context):
     for value in json_data:
         artist = value['artistName']
         title = value['title']
+        title = html.unescape(title)
+        title = html.unescape(title)
         year = value['year']
         values = [artist, title, year]
 
@@ -62,17 +57,22 @@ def lambda_handler(event, context):
     single_image_metadata = random.choice(list(indexed_json.items()))
 
     url = single_image_metadata[0]
-    painter_raw = single_image_metadata[1][0]
-    painter= h.unescape(painter_raw)
-    title_raw = single_image_metadata[1][1]
-    title = h.unescape(title_raw)
+    painter = single_image_metadata[1][0]
+    title= single_image_metadata[1][1]
     year = single_image_metadata[1][2]
 
-    print(url, painter, painter_raw,title,title_raw,year)
+    print(url, painter, title,year)
 
     # Connect to Twitter via Twython
+
+    CONSUMER_KEY = os.environ['CONSUMER_KEY']
+    CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+    ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+    ACCESS_SECRET = os.environ['ACCESS_SECRET']
+
     try:
         twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
+        print(twitter)
     except TwythonError as e:
         print(e)
 
@@ -80,7 +80,7 @@ def lambda_handler(event, context):
     try:
 
         tmp_dir = tempfile.gettempdir()
-        subprocess.call('rm -rf /tmp/*', shell=True)
+        # subprocess.call('rm -rf /tmp/*', shell=True)
         path = os.path.join(tmp_dir, url)
         print(path)
 
