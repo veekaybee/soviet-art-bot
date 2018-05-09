@@ -31,30 +31,6 @@ def lambda_handler(event, context):
         print(e)
         raise e
 
-    # Create .env file path.
-    dotenv_path = join(dirname(__file__), '.env')
-
-    # Load file from the path.
-    load_dotenv(dotenv_path)
-
-    # # Twitter Keys
-    #
-    # CONSUMER_KEY = os.getenv('CONSUMER_KEY')
-    # CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
-    # ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-    # ACCESS_SECRET = os.getenv('ACCESS_SECRET')
-    #
-    # # Twitter Keys
-    # # CONSUMER_KEY = settings.CONSUMER_KEY
-    # # CONSUMER_SECRET = settings.CONSUMER_SECRET
-    # # ACCESS_TOKEN = settings.ACCESS_TOKEN
-    # # ACCESS_SECRET = settings.ACCESS_SECRET
-    #
-    #
-    # # CONSUMER_SECRET = ssm.get_parameter(Name='CONSUMER_SECRET_TEST')['Parameter']['Value']
-    # # ACCESS_TOKEN = ssm.get_parameter(Name='ACCESS_TOKEN_TEST')['Parameter']['Value']
-    # # ACCESS_SECRET = ssm.get_parameter(Name='ACCESS_SECRET_TEST')['Parameter']['Value']
-
     print("Got keys")
 
     indexed_json = defaultdict()
