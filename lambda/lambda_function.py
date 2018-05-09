@@ -69,6 +69,12 @@ def lambda_handler(event, context):
     print(url, painter, title,year)
 
     # Connect to Twitter via Twython
+
+    CONSUMER_KEY = os.environ['CONSUMER_KEY']
+    CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+    ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+    ACCESS_SECRET = os.environ['ACCESS_SECRET']
+
     try:
         twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
         print(twitter)
